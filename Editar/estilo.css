@@ -1,20 +1,31 @@
+body {
+    background-color: #cfc9c9;
+  }
+
+
 .navbar{
-    background-color: #ffffff;
+    background-color:tomato;
     box-shadow: 0 2px 4px rgba(0,0,0,.05);
     min-height: 100px;
+    height: 100px;
 }
+
+
 
 .nav-link{
 
+    color:tomato;
     margin-right: 15px;
 }
 
 .nav-link:hover{
 
+    color:tomato;
+
 }
 
 .ima1{
-    width: 250px; height: 250px;
+    width: 220px; height: 220px;
 }
 
 .navbar-toggler{
@@ -24,3 +35,13 @@
 .navbar-toggler:focus{
   outline: none;
 }
+
+.bg-dark{
+    min-height: 50px;
+}
+
+.toolbar {
+    background-color:rgb(216, 204, 216);
+    min-height: 50px;
+}
+
