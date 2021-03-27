@@ -4,21 +4,21 @@
 .navbar{
 
     box-shadow: 0 2px 4px rgba(0,0,0,.05);
-    min-height: 100px;
-    height: 100px;
+    min-height: 90px;
+    height: 90px;
 }
 
 
 
 .nav-link{
 
-    color:tomato;
+    color:black;
     margin-right: 15px;
 }
 
 .nav-link:hover{
 
-    color:tomato;
+    color:chartreuse;
 
 }
 
@@ -39,14 +39,18 @@
 }
 
 .toolbar {
-    background-color:rgb(216, 204, 216);
-    min-height: 80px;
+  background-color:#000;
+    min-height: 50px;
+}
+
+.navbar navbar{
+    background-color: #fff;
 }
 
 .social-nwetworkd {
     position: relative;
-    top: 20px;
-    float: right;
+    top: 8px;
+
   }
   
   .social-nwetworkd a {
