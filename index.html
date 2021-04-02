@@ -12,10 +12,10 @@
      <link rel="stylesheet" type="text/css" href="Full Navegacion/bootstrap/css/bootstrap-reboot.min.css"/>
      <link rel="stylesheet" type="text/css" href="Full Navegacion/fontawesome/css/all.css"/>
      <link rel="stylesheet" type="text/css" href="Full Edictor/style.css">
+     <link rel="stylesheet" type="text/css" href="Full Edictor/Menu.css">
 
      <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="Full Edictor/style.css">
-     <link rel="stylesheet" href="css/principal.css">
      <link rel="stylesheet" href="css/articulos.css">
      <link rel="stylesheet" href="css/Hola.css">
      <link rel="stylesheet" href="css/lol.css">
@@ -30,38 +30,52 @@
  
   <header>
         
-    <div class="header-content">
-      
+    <nav class="navbar navbar-expand-lg ">
+      <div class="container-fluid">
+        <a class="navbar-brand"href="#">  <img src="Full Imagenes/logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categorias
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
 
-        
-        <img src="Full Imagenes/logo.png" alt=""></a>
-        <div class="menu" id="show-menu">
-
-            <nav>
-
-                
-                <ul>
-                    <li><a href="#"> <i class="fas fa-home"></i> Inicio</a></li>                  
-                    <li><a href="#"> <i class="fab fa-youtube"> </i>Categoria</a></li>
-                    <li class="menu-selected"><a href="blog.html" > 
-                        <i class="fas fa-file-alt"></i>Descuentos</a></li>
-                    <li><a href="#"> <i class="fas fa-headset"></i>Quienes Somos</a></li>
-                    <li><a href="#"> <i class="fas fa-headset"></i>Como Comprar</a></li>
-                    <li><a href="#"> <i class="fas fa-headset"></i>Descuentos</a></li>
-                    <li><a href="#"> <i class="fas fa-headset"></i>Contactenos</a></li>
-                    <li><a href="#"> <i class="fas fa-headset"></i>Ubicacion</a></li>
-                </ul>
-                
-            </nav>
-
+            <li class="nav-item">
+              <a class="nav-link" href="#">Descuentos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Quienes Somos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Como Comprar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contactenos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Ubicacion</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
         </div>
-
-    </div>
-
-    <div id="icon-menu">
-        <i class="fas fa-bars"></i>
-    </div>
-
+      </div>
+    </nav>
 </header>
 
 <div class="container-all" id="move-content">
@@ -354,13 +368,13 @@
   
 
   
-  <script src="js/script.js"></script>
+
   
 
 
     <script type="text/javascript" src="Full Navegacion/jquery/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="Full Navegacion/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="Full Edictor/main.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 
    <!-- Optional JavaScript; choose one of the two! -->
 
