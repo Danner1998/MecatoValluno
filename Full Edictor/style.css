@@ -18,7 +18,7 @@
 
 .nav-link:hover{
 
-    color:chartreuse;
+    color: #ffc107;
 
 }
 
@@ -43,6 +43,10 @@
     min-height: 50px;
 }
 
+.bar1 {
+    background-color:  #fff;
+      min-height: 50px;
+  }
 .page-wrap {
     background-color: #fff;
 }
@@ -196,4 +200,5 @@
     top: 50px;
     z-index: 1030;
 }
-}
+
+
