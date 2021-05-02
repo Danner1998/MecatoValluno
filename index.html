@@ -13,14 +13,17 @@
      <link rel="stylesheet" type="text/css" href="Full Navegacion/fontawesome/css/all.css"/>
      <link rel="stylesheet" type="text/css" href="Full Edictor/style.css">
      <link rel="stylesheet" type="text/css" href="Full Edictor/Menu.css">
+  
+     <link rel="stylesheet" href="Full Edictor/carrito.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
 
      <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="Full Edictor/style.css">
      <link rel="stylesheet" href="css/articulos.css">
-     <link rel="stylesheet" href="css/Hola.css">
      <link rel="stylesheet" href="css/lol.css">
      <link rel="stylesheet" href="css/mapaa.css">
-     <link rel="stylesheet" href="Full Edictor/eee.css">
+     <link rel="stylesheet" href="Full Edictor/buscar.css">
      <title>Mecato Valluno</title>
      <link rel="icon" href="Full Imagenes/logo.png">
 
@@ -29,61 +32,114 @@
  
 
     </head>
-    <body>
+
+
+ <body>
 
 
  
   <header>
         
-    <nav class="navbar navbar-expand-lg ">
+    <div class="page-wrap">
+      <div class="nav-style">
+        <div class="mobile-view">
+          <div class="mobile-view-header">
+            <div class="mobile-view-close">
+              <i class="fas fa-times js-toggle"></i>
+            </div>
+          </div>
+          <div class="mobile-view-body"></div>
+        </div>
+    <nav class="navbar navbar-expand-lg  ">
       <div class="container-fluid">
         <a class="navbar-brand"href="index.html">  <img src="Full Imagenes/logo.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="d-inline-block d-lg-none ml-md-0 ml-auto py-3">
+          <i class="fas fa-bars js-toggle" style="font-size: 25px; color: rgb(2, 2, 2)"></i>
+        </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav ml-auto js-clone-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+              <a class="nav-link active" aria-current="page" style="text-decoration:none" href="index.html">Inicio</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="categoria.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" style="text-decoration:none"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Categorias
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Desayunos Sorpresa</a></li>
-                <li><a class="dropdown-item" href="#">Desayunos Romantico</a></li>
-                <li><a class="dropdown-item" href="#">Desayunos Infantiles</a></li>
+                <li><a class="dropdown-item" style="text-decoration:none" href="#">Desayunos Sorpresa</a></li>
+                <li><a class="dropdown-item" style="text-decoration:none" href="#">Desayunos Romantico</a></li>
+                <li><a class="dropdown-item" style="text-decoration:none" href="#">Desayunos Infantiles</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="categoria.html">Ver mas categoria</a></li>
+                <li><a class="dropdown-item" style="text-decoration:none" href="categoria.html">Ver mas categoria</a></li>
               </ul>
             </li>
-
+  
             <li class="nav-item">
-              <a class="nav-link" href="descuentos.html">Descuentos</a>
+              <a class="nav-link" style="text-decoration:none"  href="descuentos.html">Descuentos</a>
             </li>
-
+  
             <li class="nav-item">
-              <a class="nav-link" href="quienes.html">Quienes Somos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="comprar.html">Como Comprar</a>
+              <a class="nav-link" style="text-decoration:none" href="quienes.html">Quienes Somos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contactenos.html">Contactenos</a>
+              <a class="nav-link" style="text-decoration:none" href="comprar.html">Como Comprar</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="ubicacion.html">Ubicación</a>
+              <a class="nav-link" style="text-decoration:none" href="contactenos.html">Contactenos</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" style="text-decoration:none" href="ubicacion.html">Ubicación</a>
+            </li>
+   
           </ul>
-           <div class="buscar">
-          <input type="text" name="search" placeholder="Buscar" 
-          class="src" autocomplete="off">
-        
+  
+  
+  
+  
+  
+        <section >
+          <form  autocomplete="off">
+            <div >
+              <input type="text"  name="o" placeholder="Buscar">
+            </div>
+          </form>
+        </section>
+       
+  
+       </div>
+  
+  
+  
+      <div class="wrapper" >
+  
+        <div>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+           <a class="nav-link"   style="text-decoration:none" href="login/login-user.php"> <i class="fas fa-user"></i> Login</a>
+         </li>
+       </ul>
+         </div>
+
+         
+  
+        <div class="cart-nav" >
+          <div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+             <a class="nav-link"   style="text-decoration:none" href="ubicacion.html"> <i class="fas fa-shopping-cart"></i> Car</a>
+           </li>
+         </ul>
            </div>
-        </div>
-      </div>
+          <div class="item-count">0</div>
+        </div >
+      </div >
+    </div>
+  
     </nav>
+  
+  </div>
+</div>
+  
 </header>
 
 <div class="container-all" id="move-content">
@@ -382,19 +438,10 @@
 
     <script type="text/javascript" src="Full Navegacion/jquery/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="Full Navegacion/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 
-   <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
-    -->
-   
   </body>
 
   
