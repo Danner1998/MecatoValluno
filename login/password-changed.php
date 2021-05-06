@@ -11,6 +11,7 @@ if($_SESSION['info'] == false){
     <title>Formulario de inicio de sesión</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imagenes/logo.png">
 </head>
 <body>
     <div class="container">

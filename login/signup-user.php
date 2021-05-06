@@ -5,13 +5,19 @@
     <meta charset="UTF-8">
     <title>Formulario de registro</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/712575d4a5.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="imagenes/logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="bg-img">
+</div>
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4 form">
                 <form action="signup-user.php" method="POST" autocomplete="">
+                <a for="show"  href="http://localhost/MecatoValluno/" style="text-decoration:none"class="close-btn fas fa-times" title="close"></a>
+
                     <h2 class="text-center">Formulario de registro</h2>
                     <p class="text-center">COMPLETA TUS DATOS PERSONALES</p>
                     <?php

@@ -12,12 +12,17 @@ if($email == false){
     <title>Code Verification</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imagenes/logo.png">
+    
 </head>
 <body>
+<div class="bg-img">
+</div>
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4 form">
                 <form action="user-otp.php" method="POST" autocomplete="off">
+                <a for="show"  href="http://localhost/MecatoValluno/" style="text-decoration:none"class="close-btn fas fa-times" title="close"></a>
                     <h2 class="text-center">Code Verification</h2>
                     <?php 
                     if(isset($_SESSION['info'])){

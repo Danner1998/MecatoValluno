@@ -1,5 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
+ @import url('https://fonts.googleapis.com/css?family=Muli:300,400,600,700&display=swap');
+   
+ .fa{
+   color: #D4AC0D;
+   text-align: center;
+   padding: 30px;
+   font-size: 46px;
+ }
+ .card{
+   padding: 15px;
+   margin: 10px;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.01);
+  transition: box-shadow 0.3s ease-in-out;
+  border:1px solid rgb(141, 104, 177);
+  cursor: pointer;
+  border-radius: 4px;
+ }
+ .card:hover{
+   box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.3);
+ }
+ h3{
+   text-align: center;
+   font-size: 22px;
+   color: #839192;
+  font-weight: 600;
+
+ }
+ 
+ p{
+   padding: 5px;
+   text-align: center;
+   font-size: 15px;
+   color: #0c0c0c;
+   line-height: 1.6;
+  font-weight: 500;
+  padding-top: 5px;
+ 
+ }
+
+ 
 
 .wrapper{
 
@@ -18,7 +57,7 @@
 
 .cart-nav .item-count{
   font-size: 15px;
-  height: 23px;
+  height: 20px;
   width: 23px;
   color: #030303;
   background: #ffcccc;
@@ -27,20 +66,11 @@
   border: 1px solid #ffb3b3;
   border-radius: 50%;
 }
-.wrapper .card{
-  position: relative;
-  background: #fff;
-  border-radius: 3px;
-  width: calc(33% - 13px);
-  overflow: hidden;
-  box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.15);
-  
-}
-.wrapper .card img{
-  width: 100%;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
+
+
+
+
+
 .card:hover img{
   transform: scale(1.1);
 }
@@ -63,3 +93,41 @@
 }
 
 
+.content .buttons{
+  margin-top: 20px;
+}
+.content .buttons button{
+  width: 100%;
+  padding: 9px 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 3px;
+  border: 2px solid #ff7979;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.content .buttons{
+  margin-top: 20px;
+}
+
+.buttons button:first-child{
+  color: #ff7979;
+  margin-right: 10px;
+  background: #fff;
+}
+button:first-child:hover{
+  color: #fff;
+  background: #ff7979;
+}
+.buttons button:last-child{
+  color: #fff;
+  margin-left: 10px;
+  background: #ff7979;
+}
+button:last-child:hover{
+  background: #ff6666;
+  border-color: #ff6666;
+}

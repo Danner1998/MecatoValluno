@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 html,body{
+
+   
+
     
     font-family: 'Poppins', sans-serif;
 }
@@ -30,14 +33,14 @@ html,body{
    font-size: 15px;
 }
 .container .form form .button{
-    background: #6665ee;
+    background: #b13be7;
     color: #fff;
     font-size: 17px;
     font-weight: 500;
     transition: all 0.3s ease;
 }
 .container .form form .button:hover{
-    background: #5757d1;
+    background: #ae00ff;
 }
 .container .form form .link{
     padding: 5px 0;
@@ -53,3 +56,57 @@ html,body{
 }
 
 
+.nav-link{
+
+    color:black;
+    margin-right: 15px;
+}
+
+.nav-link:hover{
+
+    color: #ffc107;
+
+
+}
+
+
+
+.bg-img:after{
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+}
+
+.show-btn{
+    background: #fff;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #3498db;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  }
+  .show-btn, .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  input[type="checkbox"]{
+    display: none;
+  }
+
+
+  .cardd{
+    padding: 15px;
+    margin: 10px;
+     box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.01);
+   transition: box-shadow 0.3s ease-in-out;
+   border:1px solid rgb(141, 104, 177);
+   cursor: pointer;
+   border-radius: 4px;
+  }

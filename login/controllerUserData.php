@@ -12,36 +12,43 @@ if(isset($_POST['signup'])){
     $password = mysqli_real_escape_string($con, $_POST['password']);
     $cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
     if($password !== $cpassword){
-        $errors['password'] = "Confirm password not matched!";
+        $errors['password'] = "¡Confirme que la contraseña no coincide!";
     }
     $email_check = "SELECT * FROM usertable WHERE email = '$email'";
     $res = mysqli_query($con, $email_check);
     if(mysqli_num_rows($res) > 0){
-        $errors['email'] = "Email that you have entered is already exist!";
+        $errors['email'] = "¡El correo electrónico que ingresó ya existe!";
     }
     if(count($errors) === 0){
         $encpass = password_hash($password, PASSWORD_BCRYPT);
         $code = rand(999999, 111111);
-        $status = "notverified";
+        $status = "No verificado";
         $insert_data = "INSERT INTO usertable (name, email, password, code, status)
                         values('$name', '$email', '$encpass', '$code', '$status')";
         $data_check = mysqli_query($con, $insert_data);
         if($data_check){
-            $subject = "Email Verification Code";
-            $message = "Your verification code is $code";
-            $sender = "From: daner-11@live.com";
+            $subject = "Código de verificación de correo electrónico";
+            $message = "
+                        ¡Hola!  
+                        El código de verificación de su cuenta  es: $code  
+                        Este mensaje se generó automáticamente.
+                        Si necesita ayuda o tiene preguntas, envíe un correo electrónico a 
+                        mecatovallunos@gmail.com en cualquier momento.
+                        Atentamente,
+                        Mecato Valluno";
+            $sender = "From: mecatovallunos@gmail.com";
             if(mail($email, $subject, $message, $sender)){
-                $info = "We've sent a verification code to your email - $email";
+                $info = "Hemos enviado un código de verificación a su correo electrónico - $email";
                 $_SESSION['info'] = $info;
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
                 header('location: user-otp.php');
                 exit();
             }else{
-                $errors['otp-error'] = "Failed while sending code!";
+                $errors['otp-error'] = "Error al enviar el código";
             }
         }else{
-            $errors['db-error'] = "Failed while inserting data into database!";
+            $errors['db-error'] = "¡Error al insertar datos en la base de datos!";
         }
     }
 
@@ -63,13 +70,13 @@ if(isset($_POST['signup'])){
             if($update_res){
                 $_SESSION['name'] = $name;
                 $_SESSION['email'] = $email;
-                header('location: home.php');
+                header('location: http://localhost/MecatoValluno/index1.php');
                 exit();
             }else{
-                $errors['otp-error'] = "Failed while updating code!";
+                $errors['otp-error'] = "Error al actualizar el código";
             }
         }else{
-            $errors['otp-error'] = "You've entered incorrect code!";
+            $errors['otp-error'] = "¡Has ingresado un código incorrecto!";
         }
     }
 
@@ -88,17 +95,17 @@ if(isset($_POST['signup'])){
                 if($status == 'verified'){
                   $_SESSION['email'] = $email;
                   $_SESSION['password'] = $password;
-                    header('location: home.php');
+                    header('location: http://localhost/MecatoValluno/index1.php');
                 }else{
-                    $info = "It's look like you haven't still verify your email - $email";
+                    $info = "Parece que aún no has verificado tu correo electrónico - $email";
                     $_SESSION['info'] = $info;
                     header('location: user-otp.php');
                 }
             }else{
-                $errors['email'] = "Incorrect email or password!";
+                $errors['email'] = "¡Correo o contraseña incorrectos!";
             }
         }else{
-            $errors['email'] = "It's look like you're not yet a member! Click on the bottom link to signup.";
+            $errors['email'] = "¡Parece que aún no eres miembro! Haga clic en el enlace inferior para registrarse.";
         }
     }
 
@@ -112,23 +119,23 @@ if(isset($_POST['signup'])){
             $insert_code = "UPDATE usertable SET code = $code WHERE email = '$email'";
             $run_query =  mysqli_query($con, $insert_code);
             if($run_query){
-                $subject = "Password Reset Code";
-                $message = "Your password reset code is $code";
-                $sender = "From: shahiprem7890@gmail.com";
+                $subject = "Código de restablecimiento de contraseña";
+                $message = "Su código de restablecimiento de contraseña es $code";
+                $sender = "From: mecatovallunos@gmail.com";
                 if(mail($email, $subject, $message, $sender)){
-                    $info = "We've sent a passwrod reset otp to your email - $email";
+                    $info = "Hemos enviado un otp de restablecimiento de contraseña a su correo electrónico - $email";
                     $_SESSION['info'] = $info;
                     $_SESSION['email'] = $email;
                     header('location: reset-code.php');
                     exit();
                 }else{
-                    $errors['otp-error'] = "Failed while sending code!";
+                    $errors['otp-error'] = "Error al enviar el código.";
                 }
             }else{
-                $errors['db-error'] = "Something went wrong!";
+                $errors['db-error'] = "¡Algo salió mal!";
             }
         }else{
-            $errors['email'] = "This email address does not exist!";
+            $errors['email'] = "¡Esta dirección de correo electrónico no existe!";
         }
     }
 
@@ -142,12 +149,12 @@ if(isset($_POST['signup'])){
             $fetch_data = mysqli_fetch_assoc($code_res);
             $email = $fetch_data['email'];
             $_SESSION['email'] = $email;
-            $info = "Please create a new password that you don't use on any other site.";
+            $info = "Cree una nueva contraseña que no utilice en ningún otro sitio.";
             $_SESSION['info'] = $info;
             header('location: new-password.php');
             exit();
         }else{
-            $errors['otp-error'] = "You've entered incorrect code!";
+            $errors['otp-error'] = "¡Has ingresado un código incorrecto!";
         }
     }
 
@@ -157,7 +164,7 @@ if(isset($_POST['signup'])){
         $password = mysqli_real_escape_string($con, $_POST['password']);
         $cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
         if($password !== $cpassword){
-            $errors['password'] = "Confirm password not matched!";
+            $errors['password'] = "¡Confirme que la contraseña no coincide!";
         }else{
             $code = 0;
             $email = $_SESSION['email']; //getting this email using session
@@ -165,11 +172,11 @@ if(isset($_POST['signup'])){
             $update_pass = "UPDATE usertable SET code = $code, password = '$encpass' WHERE email = '$email'";
             $run_query = mysqli_query($con, $update_pass);
             if($run_query){
-                $info = "Your password changed. Now you can login with your new password.";
+                $info = "Tu contraseña cambió. Ahora puede iniciar sesión con su nueva contraseña.";
                 $_SESSION['info'] = $info;
                 header('Location: password-changed.php');
             }else{
-                $errors['db-error'] = "Failed to change your password!";
+                $errors['db-error'] = "¡No se pudo cambiar su contraseña!";
             }
         }
     }
