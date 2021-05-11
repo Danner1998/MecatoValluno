@@ -74,7 +74,7 @@ if(isset($_SESSION['carrito'])){
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
     <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="icon" href="Full Imagenes/logo.png">
+    <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
     <link rel="stylesheet" href="css/jquery-ui.css">

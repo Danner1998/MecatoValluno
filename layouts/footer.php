@@ -33,7 +33,7 @@
           <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
             <h3 class="footer-heading mb-4">Promocion</h3>
             <a href="#" class="block-6">
-              <img src="Full Imagenes/detalles-empresariales.png" alt="Image placeholder" class="img-fluid rounded mb-4">
+              <img src="images/detalles-empresariales.png" alt="Image placeholder" class="img-fluid rounded mb-4">
               <h3 class="font-weight-light  mb-0">Encuentra tus mecatos sorpresa favoritos</h3>
               <p>Promoción del 15 de mayo &mdash; 30, 2021</p>
             </a>
@@ -55,7 +55,7 @@
           <div class="col-md-12">
             <p>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Desde la cuenta de  <i class="icon-heart" aria-hidden="true"></i> by <a href="http://localhost/MecatoValluno/#" target="_blank" class="text-primary">Mecato Valluno</a>
+            Copyright &copy;<script data-cfasync="false" ></script><script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Desde la cuenta de  <i class="icon-heart" aria-hidden="true"></i> by <a href="http://localhost/MecatoValluno/#" target="_blank" class="text-primary">Mecato Valluno</a>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>

@@ -17,7 +17,7 @@ $arreglo = $_SESSION['carrito'];
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
     <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="icon" href="Full Imagenes/logo.png">
+    <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
     <link rel="stylesheet" href="css/jquery-ui.css">
@@ -31,7 +31,8 @@ $arreglo = $_SESSION['carrito'];
     
   </head>
   <body>
-  
+  <script src="https://www.paypal.com/sdk/js?client-id=AQCoNVVfX3vAj44tZlgTSyMgmpa9QXI0eosTdX7lJP1gSwg0F1D3cylCrwTa1C9Wn0Nlv94_ur4EW1th"> // Replace YOUR_CLIENT_ID with your sandbox client ID
+    </script>
   <div class="site-wrap">
     <?php include("./layouts/header.php"); ?> 
     <form action=" ./thankyou.php" method="post">
@@ -275,25 +276,7 @@ $arreglo = $_SESSION['carrito'];
                     </tbody>
                   </table>
 
-                  <div class="border p-3 mb-3">
-                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Transferencia bancaria directa</a></h3>
 
-                    <div class="collapse" id="collapsebank">
-                      <div class="py-2">
-                        <p class="mb-0">Realice su pago directamente en nuestra cuenta bancaria. Utilice su ID de pedido como referencia de pago. Su pedido no se enviará hasta que los fondos se hayan liquidado en nuestra cuenta.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="border p-3 mb-3">
-                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Pago con cheque</a></h3>
-
-                    <div class="collapse" id="collapsecheque">
-                      <div class="py-2">
-                        <p class="mb-0">Realice su pago directamente en nuestra cuenta bancaria. Utilice su ID de pedido como referencia de pago. Su pedido no se enviará hasta que los fondos se hayan liquidado en nuestra cuenta.</p>
-                      </div>
-                    </div>
-                  </div>
 
                   <div class="border p-3 mb-5">
                     <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
@@ -304,6 +287,7 @@ $arreglo = $_SESSION['carrito'];
                       </div>
                     </div>
                   </div>
+                  <div id="paypal-button-container"></div>
 
                   <div class="form-group">
                     <button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Realizar pedido</button>
@@ -332,6 +316,24 @@ $arreglo = $_SESSION['carrito'];
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
-    
+  <script>
+      paypal.Buttons({
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: '500'
+              }
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            console.log(details);
+            alert('Transaction completed by ' + details.payer.name.given_name);
+          });
+        }
+      }).render('#paypal-button-container'); // Display payment options on your web page
+    </script>
   </body>
 </html>

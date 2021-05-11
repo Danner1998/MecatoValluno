@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
-    <link rel="icon" href="Full Imagenes/logo.png">
+    <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="css/aos.css">
 
     <link rel="stylesheet" href="css/style.css">
@@ -87,7 +87,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
             <a class="block-2-item" href="#">
               <figure class="image">
-                <img src="Full Imagenes/detalles-empresariales.png" alt="" class="img-fluid">
+                <img src="images/detalles-empresariales.png" alt="" class="img-fluid">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Mecato </span>
@@ -98,7 +98,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
             <a class="block-2-item" href="#">
               <figure class="image">
-                <img src="Full Imagenes/Imagen1.png" alt="" class="img-fluid">
+                <img src="images/Imagen1.png" alt="" class="img-fluid">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Mecato </span>
@@ -109,7 +109,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
             <a class="block-2-item" href="#">
               <figure class="image">
-                <img src="Full Imagenes/regalos-personales.png" alt="" class="img-fluid">
+                <img src="images/regalos-personales.png" alt="" class="img-fluid">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Mecato</span>
@@ -134,7 +134,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="Full Imagenes/reagalo.png" alt="Image placeholder" class="img-fluid">
+                    <img src="images/reagalo.png" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Mecato Familiar</a></h3>
@@ -146,7 +146,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="Full Imagenes/cam1.png" alt="Image placeholder" class="img-fluid">
+                    <img src="images/cam1.png" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Mecato Notturno</a></h3>
@@ -158,7 +158,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="Full Imagenes/cam2.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/cam2.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Mecato Endulzante</a></h3>
@@ -170,7 +170,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="Full Imagenes/cam3.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/cam3.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Mecato san valentin</a></h3>
@@ -182,7 +182,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="Full Imagenes/cam4.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/cam4.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Mecato navideño</a></h3>

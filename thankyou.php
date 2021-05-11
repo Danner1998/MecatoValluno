@@ -14,12 +14,15 @@ if(isset($_POST['c_account_password'])){
 
   }
 }
-$conexion->query("insert into usuario (nombre,telefono,email,password)  
+$conexion->query("insert into usuario (nombre,telefono,email,password,img_perfil,nivel)  
 values(
   '".$_POST['c_fname']." ".$_POST['c_lname']."',
   '".$_POST['c_phone']."',
   '".$_POST['c_email_address']."',
-  '".sha1($password)."'
+  '".sha1($password)."',
+  'defaul.jpg',
+  'cliente'
+
 )  
 ")or die($conexion->error);
   $id_usuario = $conexion->insert_id;
@@ -50,6 +53,7 @@ $conexion->query(" insert into envios(pais,compania,direcion,estado,cp,id_venta)
   $id_venta
 )
 ")or die($conexion->error);
+include "./php/mail.php";
   unset($_SESSION['carrito']);
 ?>
 
@@ -62,7 +66,7 @@ $conexion->query(" insert into envios(pais,compania,direcion,estado,cp,id_venta)
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
     <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="icon" href="Full Imagenes/logo.png">
+    <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
     <link rel="stylesheet" href="css/jquery-ui.css">
@@ -92,7 +96,8 @@ $conexion->query(" insert into envios(pais,compania,direcion,estado,cp,id_venta)
             <span class="icon-check_circle display-3 text-success"></span>
             <h2 class="display-3 text-black">¡Gracias!</h2>
             <p class="lead mb-5">Su pedido se completó con éxito.</p>
-            <p><a href="shop.html" class="btn btn-sm btn-primary">Volver a la tienda</a></p>
+            <p><a href="verpedido.php?id_venta=<?php echo $id_venta;?>" class="btn btn-sm btn-primary">Ver pedido</a></p>
+            <p><a href="http://localhost/MecatoValluno/index1.php" class="btn btn-sm btn-primary">Volver a la tienda</a></p>
           </div>
         </div>
       </div>

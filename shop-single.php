@@ -18,7 +18,7 @@ if(mysqli_num_rows($resultado) > 0 ){
     <title>Tienda</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="Full Imagenes/logo.png">
+    <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
     <link rel="stylesheet" href="fonts/icomoon/style.css">
 
@@ -93,7 +93,7 @@ if(mysqli_num_rows($resultado) > 0 ){
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="Full Imagenes/reagalo.png" alt="Image placeholder" class="img-fluid">
+                    <img src="images/reagalo.png" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Mecato Familiar</a></h3>
@@ -105,7 +105,7 @@ if(mysqli_num_rows($resultado) > 0 ){
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="Full Imagenes/cam1.png" alt="Image placeholder" class="img-fluid">
+                    <img src="images/cam1.png" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Mecato Notturno</a></h3>
@@ -117,7 +117,7 @@ if(mysqli_num_rows($resultado) > 0 ){
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="Full Imagenes/cam2.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/cam2.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Mecato Endulzante</a></h3>
@@ -129,7 +129,7 @@ if(mysqli_num_rows($resultado) > 0 ){
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="Full Imagenes/cam3.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/cam3.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Mecato san valentin</a></h3>
@@ -141,7 +141,7 @@ if(mysqli_num_rows($resultado) > 0 ){
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="Full Imagenes/cam4.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="images/cam4.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Mecato navideño</a></h3>

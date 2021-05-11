@@ -11,8 +11,8 @@
             </div>
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
-              <a class="navbar-brand"href="index.html">  <img src="Full Imagenes/logo.png" alt=""></a>
-              <div class="site-logo">
+              <a class="navbar-brand"href="index.php">  <img src="images/logo.png" alt=""></a>
+              <div >
                 <a href="index.php" class="js-logo-clone">MECATO VALLUNO</a>
                 
               </div>

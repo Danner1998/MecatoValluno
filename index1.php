@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
     <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="icon" href="Full Imagenes/logo.png">
+    <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
     <link rel="stylesheet" href="css/jquery-ui.css">
@@ -101,7 +101,7 @@
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
                     <a href="shop-single.php?id=<?php echo $fila['id'];?>">
-                      <img src="Full Imagenes/<?php echo $fila['imagen'];?>" alt="<?php echo $fila['nombre'];?>" class="img-fluid"></a>
+                      <img src="images/<?php echo $fila['imagen'];?>" alt="<?php echo $fila['nombre'];?>" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="shop-single.php?id=<?php echo $fila['id'];?>"><?php echo $fila['nombre'];?></a></h3>
@@ -183,7 +183,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
             <a class="block-2-item" href="#">
               <figure class="image">
-                <img src="Full Imagenes/detalles-empresariales.png" alt="" class="img-fluid">
+                <img src="images/detalles-empresariales.png" alt="" class="img-fluid">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Mecato </span>
@@ -194,7 +194,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
             <a class="block-2-item" href="#">
               <figure class="image">
-                <img src="Full Imagenes/Imagen1.png" alt="" class="img-fluid">
+                <img src="images/Imagen1.png" alt="" class="img-fluid">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Mecato </span>
@@ -205,7 +205,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
             <a class="block-2-item" href="#">
               <figure class="image">
-                <img src="Full Imagenes/regalos-personales.png" alt="" class="img-fluid">
+                <img src="images/regalos-personales.png" alt="" class="img-fluid">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Mecato</span>
