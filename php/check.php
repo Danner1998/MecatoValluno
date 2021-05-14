@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "./conexion.php";
-if( isset($_POST['email']) && isset($_POST['password']) ){
+if( isset($_POST['email']) && isset($_POST['password'])  ){
 
     $resultado = $conexion->query("select * from usuario where
         email='".$_POST['email']."' and

@@ -51,20 +51,9 @@ session_start();
                     Tipos
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                      <a class="dropdown-item" href="#">Mecato Sorpresa</a>
-                      <a class="dropdown-item" href="#">Mecato Románticos</a>
-                      <a class="dropdown-item" href="#">Mecato Infantiles</a>
-                    </div>
-                  </div>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Referencia</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                      <a class="dropdown-item" href="#">Relevancia</a>
-                      <a class="dropdown-item" href="#">Nombre, A a Z</a>
-                      <a class="dropdown-item" href="#">Nombre, Z a A</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Precio, bajo a alto</a>
-                      <a class="dropdown-item" href="#">Precio, de mayor a menor</a>
+                      <a class="dropdown-item" href="buscar.php?texto=Sorpresa">Mecato Sorpresa</a>
+                      <a class="dropdown-item" href="buscar.php?texto=Románticos">Mecato Románticos</a>
+                      <a class="dropdown-item" href="buscar.php?texto=Infantiles">Mecato Infantiles</a>
                     </div>
                   </div>
                 </div>
@@ -73,9 +62,12 @@ session_start();
             <div class="row mb-5">
                  <?php 
 
-                 $resultado = $conexion ->query("select * from productos where 
-                nombre like '%".$_GET['texto']."%' or
-                descripcion like '%".$_GET['texto']."%' 
+                 $resultado = $conexion ->query("select productos.*, categorias.nombre as categoria from productos 
+                 inner join categorias on productos.id_categoria = categorias.id
+                 where 
+                productos.nombre like '%".$_GET['texto']."%' or
+                categorias.nombre like '%".$_GET['texto']."%' or
+                productos.descripcion like '%".$_GET['texto']."%' 
 
                 
                  order by id DESC limit 10")or die($conexion -> error);
@@ -111,13 +103,26 @@ session_start();
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
                   <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
+                  <?php
+                     if(isset($_GET['limite'])){
+                       if($_GET['limite']>0){
+                         echo '<li><a href="index1.php?limite='.($_GET['limite']-10).'">&lt;</a></li>';
+                       }
+
+                     }
+                  
+               
+                    if(isset($_GET['limite'])){
+                      if($_GET['limite']+10 < $totalBotones*10){
+                        echo '<li><a href="index1.php?limite='.($_GET['limite']+10).'">&gt;</a></li>';
+                      }
+
+                    }else{
+                     echo '<li><a href="index1.php?limite=10">&gt;</a></li>';
+                    }
+
+
+                    ?>
                   </ul>
                 </div>
               </div>
@@ -125,54 +130,31 @@ session_start();
           </div>
 
           <div class="col-md-3 order-1 mb-5 mb-md-0">
-            <div class="border p-4 rounded mb-4">
+          <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" class="d-flex"><span>Mecato Sorpresa</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Mecato Románticos</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Mecato Infantiles</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                <?php 
+                $re= $conexion->query("select * from categorias ");
+                while ($f= mysqli_fetch_array($re)) {
+                    ?>
+                <li class="mb-1">
+                  <a href="./buscar.php?texto=<?php echo $f['nombre']?>" class="d-flex">
+                 <span> <?php echo $f['nombre']?></span>
+               <span class="text-black ml-auto">
+               <?php $re2 = $conexion->query("select count(*) from productos where id_categoria = ".$f['id']);
+               $fila = mysqli_fetch_row($re2);
+               echo $fila[0];
+               
+               ?>
+
+               </span>
+              </a></li>
+              <?php     }  ?>
+              
               </ul>
             </div>
-
-            <div class="border p-4 rounded mb-4">
-              <div class="mb-4">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Filtrar por precio</h3>
-                <div id="slider-range" class="border-primary"></div>
-                <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
-              </div>
-
-              <div class="mb-4">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Tamaño</h3>
-                <label for="s_sm" class="d-flex">
-                  <input type="checkbox" id="s_sm" class="mr-2 mt-1"> <span class="text-black">Pequeño (2,319)</span>
-                </label>
-                <label for="s_md" class="d-flex">
-                  <input type="checkbox" id="s_md" class="mr-2 mt-1"> <span class="text-black">Medio (1,282)</span>
-                </label>
-                <label for="s_lg" class="d-flex">
-                  <input type="checkbox" id="s_lg" class="mr-2 mt-1"> <span class="text-black">Grande (1,392)</span>
-                </label>
-              </div>
-
-              <div class="mb-4">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Decoraziones</h3>
-                <a href="#" class="d-flex color-item align-items-center" >
-                  <span class="bg-danger color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Rojo (2,429)</span>
-                </a>
-                <a href="#" class="d-flex color-item align-items-center" >
-                  <span class="bg-success color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Verde (2,298)</span>
-                </a>
-                <a href="#" class="d-flex color-item align-items-center" >
-                  <span class="bg-info color d-inline-block rounded-circle mr-2"></span> <span class="text-black">azul (1,075)</span>
-                </a>
-                <a href="#" class="d-flex color-item align-items-center" >
-                  <span class="bg-primary color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Purpura (1,075)</span>
-                </a>
-              </div>
-
-            </div>
-          </div>
         </div>
+            </div>
 
         <div class="site-section site-blocks-2">
       <div class="container">

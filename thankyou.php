@@ -14,6 +14,7 @@ if(isset($_POST['c_account_password'])){
 
   }
 }
+$encpass = password_hash($password, PASSWORD_BCRYPT);
 $conexion->query("insert into usuario (nombre,telefono,email,password,img_perfil,nivel)  
 values(
   '".$_POST['c_fname']." ".$_POST['c_lname']."',

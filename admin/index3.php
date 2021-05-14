@@ -11,7 +11,8 @@ if(!isset($_SESSION['datos_login'])){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pedidos</title>
+  <title>Panel de control</title>
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -54,11 +55,11 @@ if(!isset($_SESSION['datos_login'])){
     </section>
     <!-- /.content -->
   </div>
- 
+  <?php include "./layouts/footer.php";?>
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<?php include "./layouts/footer.php";?>
+
 <!-- jQuery -->
 <script src="./personas/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -92,6 +93,6 @@ if(!isset($_SESSION['datos_login'])){
 <!-- AdminLTE for demo purposes -->
 <script src="./personas/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-
+<script src="./personas/dist/js/pages/dashboard.js"></script>
 </body>
 </html>

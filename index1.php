@@ -22,20 +22,14 @@
     <link rel="stylesheet" href="css/style.css">
     
   </head>
+  <?php include("./layouts/header.php"); ?> 
   <body>
   
   
   <div class="site-wrap">
-    <?php include("./layouts/header.php"); ?> 
-    <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0"><a href="http://localhost/MecatoValluno/index1.php">Salir</a> <span class="mx-2 mb-0">/</span>
-           <strong class="text-black">Tienda</strong></div>
-        </div>
-      </div>
-    </div>
+   
     <div class="site-section">
+    
       <div class="container">
 
         <div class="row mb-5">
@@ -50,20 +44,9 @@
                     Tipos
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                      <a class="dropdown-item" href="#">Mecato Sorpresa</a>
-                      <a class="dropdown-item" href="#">Mecato Románticos</a>
-                      <a class="dropdown-item" href="#">Mecato Infantiles</a>
-                    </div>
-                  </div>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Referencia</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                      <a class="dropdown-item" href="#">Relevancia</a>
-                      <a class="dropdown-item" href="#">Nombre, A a Z</a>
-                      <a class="dropdown-item" href="#">Nombre, Z a A</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Precio, bajo a alto</a>
-                      <a class="dropdown-item" href="#">Precio, de mayor a menor</a>
+                      <a class="dropdown-item" href="buscar.php?texto=Sorpresa">Mecato Sorpresa</a>
+                      <a class="dropdown-item" href="buscar.php?texto=Románticos">Mecato Románticos</a>
+                      <a class="dropdown-item" href="buscar.php?texto=Infantiles">Mecato Infantiles</a>
                     </div>
                   </div>
                 </div>
@@ -153,20 +136,25 @@
             <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" class="d-flex"><span>Mecato Sorpresa</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Mecato Románticos</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Mecato Infantiles</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                <?php 
+                $re= $conexion->query("select * from categorias ");
+                while ($f= mysqli_fetch_array($re)) {
+                    ?>
+                <li class="mb-1">
+                  <a href="./buscar.php?texto=<?php echo $f['nombre']?>" class="d-flex">
+                 <span> <?php echo $f['nombre']?></span>
+               <span class="text-black ml-auto">
+               <?php $re2 = $conexion->query("select count(*) from productos where id_categoria = ".$f['id']);
+               $fila = mysqli_fetch_row($re2);
+               echo $fila[0];
+               
+               ?>
+
+               </span>
+              </a></li>
+              <?php     }  ?>
+              
               </ul>
-            </div>
-
-            <div class="border p-4 rounded mb-4">
-              <div class="mb-4">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Filtrar por precio</h3>
-                <div id="slider-range" class="border-primary"></div>
-                <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
-              </div>
-
-
             </div>
           </div>
         </div>
@@ -222,6 +210,9 @@
 
 
     <?php include("./layouts/footer.php"); ?> 
+  </div>
+  </div>
+  </div>
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>

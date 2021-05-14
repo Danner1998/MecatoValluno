@@ -13,16 +13,21 @@
   <link rel="stylesheet" href="./admin/personas/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="./admin/personas/dist/css/adminlte.min.css">
+
+  
+
 </head>
 <body class="hold-transition login-page">
+  
 <div class="login-box">
   <div class="login-logo">
-    <a href="./index.html"><b>Mecato Valluno</a>
+    <a href="index.php"><b>Mecato Valluno</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Regístrese para iniciar su sesión </p>
+    <a for="show"  href="index.php" class="close-btn fas fa-times" title="close"></a>
+      <p class="login-box-msg">Iniciar sesión </p>
 
       <form action="./php/check.php" method="post">
         <div class="input-group mb-3">
@@ -42,14 +47,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-              Recuérdame 
-              </label>
-            </div>
-          </div>
+
           <!-- /.col -->
          
           <div   class="col-4">
@@ -67,12 +65,7 @@
 
       <!-- /.social-auth-links -->
 
-      <p class="mb-1">
-        <a href="forgot-password.html">Olvidé mi contraseña </a>
-      </p>
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Registrar una nueva membresía </a>
-      </p>
+ 
     </div>
     <!-- /.login-card-body -->
   </div>

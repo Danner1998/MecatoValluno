@@ -2,11 +2,11 @@
 session_start();
 include "../php/conexion.php";
 if(!isset($_SESSION['datos_login'])){
-  header("Location: ../index.php");
+  header("Location: ../admin/");
 }
 $arregloUsuario = $_SESSION['datos_login'];
 if($arregloUsuario['nivel']!='admin'){
-  header("Location: ../index.php");
+  header("Location: ../admin/");
 }
 $resultado = $conexion ->query("
     select ventas.*, usuario.nombre, usuario.telefono, usuario.email from ventas
