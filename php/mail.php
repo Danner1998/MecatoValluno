@@ -61,7 +61,7 @@ con un gran abrazo, porque ustedes son nuestros clientes favoritos.
     
         <tr>
         <th scope="col">Nombre producto&nbsp;&nbsp;</th>
-        <th scope="col">Precio&nbsp;</th>
+        <th scope="col">Precio Iniciañ&nbsp;</th>
         <th scope="col">Unidades&nbsp;</th>
         <th scope="col">Subtotal&nbsp;</th>
         </tr>
@@ -74,9 +74,9 @@ con un gran abrazo, porque ustedes son nuestros clientes favoritos.
         for($i=0;$i<count($arregloCarrito);$i++){
           $total= $total + ( $arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad']);
           $mensaje.='<tr><td>'. $arregloCarrito[$i]['Nombre'].'</td>';
-          $mensaje.='<td>'. $arregloCarrito[$i]['Precio'].'</td>';
+          $mensaje.='<td>'. number_format($arregloCarrito[$i]['Precio'],3,'.','');'</td>';
           $mensaje.='<td>'. $arregloCarrito[$i]['Cantidad'].'</td>';
-          $mensaje.='<td>'. ($arregloCarrito[$i]['Precio']*$arregloCarrito[$i]['Cantidad']).'</td> </tr>';
+          $mensaje.='<td>'. number_format($arregloCarrito[$i]['Precio']*$arregloCarrito[$i]['Cantidad'],3,'.','').'</td> </tr>';
         }    } 
 $mensaje.='</tbody></table>';
 $mensaje.='<h2>Total de la compra: '.$total.' </h2>';
@@ -85,7 +85,7 @@ Ver Status del pedido
 </a> ' ;
 $mensaje.='<div>
 
-<br><br><img src="https://github.com/Danner1998/MecatoValluno/blob/main/Full%20Imagenes/detalles-empresariales.png?raw=true">
+<br><br><img src="https://raw.githubusercontent.com/Danner1998/MecatoValluno/main/images/detalles-empresariales.png">
 
 </div> </body>';
 

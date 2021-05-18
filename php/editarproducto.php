@@ -34,6 +34,6 @@ if(isset($_POST['nombre']) &&  isset($_POST['descripcion'])   &&  isset($_POST['
                         inventario=".$_POST['inventario'].",
                         id_categoria=".$_POST['categoria']."
                         where id=".$_POST['id']);
-    echo "se actualizo";
+                        header("Location: ../admin/productos.php");
 }   
 ?>

@@ -6,7 +6,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Inicio</a>
+        <a href="" class="nav-link">Inicio</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contacto </a>
@@ -54,7 +54,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="" class="brand-link">
       <img src="" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light" >&nbsp; &nbsp; &nbsp; &nbsp; MecatoValluno</span>
     </a>
@@ -76,15 +76,82 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
-  
-          <li class="nav-item">
-            <a href="./index.php" class="nav-link">
+            <li class="nav-item">  <a href="./index.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Inicio
+              </p>
+            </a>
+          </li>
+
+               <li class="nav-item">
+            <a href="./usuarios.php" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Usuarios
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="./solicitud.php" class="nav-link">
+              <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+              solicitud de Permisos
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="./paises.php" class="nav-link">
+              <i class="nav-icon fas fa-globe-americas"></i>
+              <p>
+              Paises y Ciudades
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="./empleados.php" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>
+              Empleados
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="./cliente.php" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Clientes
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="./provedores.php" class="nav-link">
+              <i class="nav-icon fas fa-people-carry"></i>
+              <p>
+              Provedores
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="./mano.php" class="nav-link">
+              <i class="nav-icon fas fa-people-carry"></i>
+              <p>
+              Mano de Obra
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="./mano2.php" class="nav-link">
+              <i class="nav-icon fas fa-people-carry"></i>
+              <p>
+              Mano de Obra
               </p>
             </a>
           </li>
@@ -116,46 +183,16 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="./usuarios.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Usuarios
-              </p>
-            </a>
-          </li>
 
-          <li class="nav-item">
-            <a href="./paises.php" class="nav-link">
-              <i class="nav-icon fas fa-globe-americas"></i>
-              <p>
-              Paises y Ciudades
-              </p>
-            </a>
-          </li>
+
+
+
+     
 
 
      
           <li class="nav-item">
-            <a href="./empleados.php" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
-              <p>
-              Empleados
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="./provedores.php" class="nav-link">
-              <i class="nav-icon fas fa-people-carry"></i>
-              <p>
-              Provedores
-              </p>
-            </a>
-          </li>
-     
-          <li class="nav-item">
-            <a href="./actualizacion.php" class="nav-link">
+            <a href="./solicitudes.php" class="nav-link">
               <i class="nav-icon fas fa-user-edit"></i>
               <p>
               Actualizacion

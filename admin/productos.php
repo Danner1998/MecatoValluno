@@ -27,6 +27,7 @@ $resultado = $conexion ->query("
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="./personas/plugins/fontawesome-free/css/all.min.css">
+  <link rel="icon" href="../images/logo.png">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -58,8 +59,8 @@ $resultado = $conexion ->query("
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Productos</h1>
+          <div class="offset-xl-3 col-xl-6">
+            <h1 class="m-0" style="text-align: center;">Productos</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -115,7 +116,7 @@ $resultado = $conexion ->query("
       <img src="../images/<?php echo $f['imagen'];?>" width="40px" height="40px" alt="">
       <?php echo $f['nombre'];?></td>
       <td><?php echo $f['descripcion'];?></td>
-      <td>$<?php echo number_format($f['precio'],2,'.','');?></td>
+      <td>$<?php echo number_format($f['precio'],3,'.','');?></td>
       <td><?php echo $f['inventario'];?></td>
       <td><?php echo $f['catego'];?> </td>
       <td>
@@ -164,41 +165,41 @@ $resultado = $conexion ->query("
 <div class="form-group">
 
         <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" placeholder="nombre" id="nombre" class="form-control"require>
+        <input type="text" name="nombre" placeholder="nombre" id="nombre" class="form-control"required>
 
 </div>
 
 <div class="form-group">
 
         <label for="descripcion">Descripcion</label>
-        <input type="text" name="descripcion" placeholder="descripcion" id="descripcion" class="form-control"require>
+        <input type="text" name="descripcion" placeholder="descripcion" id="descripcion" class="form-control"required>
 
 </div>
 
 <div class="form-group">
 
         <label for="imagen">Imagen</label>
-        <input type="file" name="imagen"  id="imagen" class="form-control"require>
+        <input type="file" name="imagen"  id="imagen" class="form-control"required>
 
 </div>
 
 
 <div class="form-group">
       <label for="precio">Precio</label>
-      <input type="number" min="0" name="precio" placeholder="precio" id="precio" class="form-control"require>
+      <input type="number" min="0" name="precio" placeholder="precio" id="precio" class="form-control"required>
 
   </div>
 
 
   <div class="form-group">
       <label for="inventario">Inventario</label>
-      <input type="number"  min="0" name="inventario" placeholder="inventario" id="inventario" class="form-control"require>
+      <input type="number"  min="0" name="inventario" placeholder="inventario" id="inventario" class="form-control"required>
 
   </div>
 
   <div class="form-group">
       <label for="categoria">Categoria</label>
-     <select name="categoria" id="categoria" class="form-control" require>
+     <select name="categoria" id="categoria" class="form-control" required>
      <?php
      $res= $conexion->query("select * from categorias");
      while($f=mysqli_fetch_array($res)){
@@ -348,6 +349,7 @@ $resultado = $conexion ->query("
 <script>
 $(document).ready(function(){
   var idEliminar= -1;
+  var idEditar= -1;
   var fila;
   $(".btnEliminar").click(function(){
     idEliminar= $(this).data('id');

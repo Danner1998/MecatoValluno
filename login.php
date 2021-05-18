@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./admin/personas/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="./admin/personas/dist/css/adminlte.min.css">
-
+  <link rel="icon" href="images/logo.png">
   
 
 </head>

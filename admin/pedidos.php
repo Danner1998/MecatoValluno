@@ -21,9 +21,10 @@ $resultado = $conexion ->query("
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pedidos</title>
+  <title>Informe</title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="icon" href="../images/logo.png">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="./personas/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -51,27 +52,24 @@ $resultado = $conexion ->query("
 <?php include "./layouts/header.php";?>
 
   <!-- Content Wrapper. Contains page content -->
+  
   <div class="content-wrapper">
 
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Productos</h1>
+          <div class="offset-xl-3 col-xl-6">
+            <h1 class="m-0" style="text-align: center;">Infome de la Venta</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-          <i class="fas fa-cart-plus"></i> Insertar Producto
-</button>
-          </div><!-- /.col -->
+
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" >
       <div class="container-fluid">
       <?php
         if(isset($_GET['error'])){
@@ -83,17 +81,21 @@ $resultado = $conexion ->query("
         <?php }   ?>
 
         <?php
+        
         if(isset($_GET['success'])){
        ?>
+       
    <div class="alert alert-success" role="alert">
        Se ha insertado correctamente.
         </div>
 
         <?php }   ?>
         <div id="accordion">
+        <div class="offset-xl-3 col-xl-6">
         <?php 
           while($f=mysqli_fetch_array($resultado)){     
         ?>
+        
                 <div class="card">
                     <div class="card-header" id="heading<?php echo $f['id'];?>">
                     <h5 class="mb-0">
@@ -105,10 +107,13 @@ $resultado = $conexion ->query("
 
                     <div id="collapse<?php echo $f['id'];?>" class="collapse" aria-labelledby="heading<?php echo $f['id'];?>" data-parent="#accordion">
                     <div class="card-body">
+                    
                     <p>Nombre del Cliente: <?php echo $f['nombre']; ?></p>
                     <p>Correo del Cliente: <?php echo $f['email']; ?></p>
                     <p>Telefono del Cliente: <?php echo $f['telefono']; ?></p>
                     <p>Status del Pedido: <b><?php echo $f['status']; ?></b> </p>
+                    <p>Id Producto: <b><?php echo $f['id']; ?></b> </p>
+                    
                     <p class="h6">Datos de Envio</p>
                     <?php 
                       $re=$conexion->query("select * from envios where id_venta=".$f['id'])or die($conexion->error);
@@ -117,44 +122,17 @@ $resultado = $conexion ->query("
                    <p>Direccion: <?php echo $fila[3]; ?></p>
                    <p>Estado: <?php echo $fila[4]; ?></p>
                    <p>Codigo Postal: <?php echo $fila[5]; ?></p>
-
-                   <table class="table">
-      <thead>
-      <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-      <th>Precio</th>
-      <th>Cantidad</th>
-      <th>Subtotal</th>
-      </tr>
-      </thead>
-
-      <tbody>
-
-      <?php
-        $re=$conexion->query("select productos_venta.*, productos.nombre
-        from productos_venta inner join productos on productos_venta.id_producto = productos.id
-        where productos_venta.id_producto = productos.id ")or die($conexion->error);
-        while($f2 = mysqli_fetch_array($re)){     
-      ?>
-      <tr>
-      <td><?php echo $f2['id'];?></td>
-      <td><?php echo $f2['nombre']; ?></td>
-      <td><?php echo number_format($f2['precio'],2,'.','');?></td>
-      <td><?php echo $f2['cantidad'];?></td>
-      <td><?php echo $f2['subtotal'];?> </td>
-      </tr>
-      <?php
-               }
-          ?>
-      </tbody>
-      </table>
-
-
-                    </div>
+                   <button class="btn btn-danger btn-small btnEliminar"
+      data-id="<?php echo $f['id'];?>"
+       data-toggle="modal" data-target="#modalEliminar">
+       <i class="fa fa-trash"></i>
+      </button>
+                   </div> 
+                   
                     </div>
                 </div>
           <?php }   ?>
+         </div>
          </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -175,41 +153,41 @@ $resultado = $conexion ->query("
     <div class="form-group">
 
         <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" placeholder="nombre" id="nombre" class="form-control"require>
+        <input type="text" name="nombre" placeholder="nombre" id="nombre" class="form-control"required>
 
     </div>
 
    <div class="form-group">
 
         <label for="descripcion">Descripcion</label>
-        <input type="text" name="descripcion" placeholder="descripcion" id="descripcion" class="form-control"require>
+        <input type="text" name="descripcion" placeholder="descripcion" id="descripcion" class="form-control"required>
 
    </div>
 
     <div class="form-group">
 
         <label for="imagen">Imagen</label>
-        <input type="file" name="imagen"  id="imagen" class="form-control"require>
+        <input type="file" name="imagen"  id="imagen" class="form-control"required>
 
    </div>
 
 
    <div class="form-group">
       <label for="precio">Precio</label>
-      <input type="number" min="0" name="precio" placeholder="precio" id="precio" class="form-control"require>
+      <input type="number" min="0" name="precio" placeholder="precio" id="precio" class="form-control"required>
 
   </div>
 
 
   <div class="form-group">
       <label for="inventario">Inventario</label>
-      <input type="number"  min="0" name="inventario" placeholder="inventario" id="inventario" class="form-control"require>
+      <input type="number"  min="0" name="inventario" placeholder="inventario" id="inventario" class="form-control"required>
 
   </div>
 
   <div class="form-group">
       <label for="categoria">Categoria</label>
-     <select name="categoria" id="categoria" class="form-control" require>
+     <select name="categoria" id="categoria" class="form-control" required>
      <?php
      $res= $conexion->query("select * from categorias");
      while($f=mysqli_fetch_array($res)){
@@ -359,6 +337,7 @@ $resultado = $conexion ->query("
 <script>
 $(document).ready(function(){
   var idEliminar= -1;
+  var idEditar= -1;
   var fila;
   $(".btnEliminar").click(function(){
     idEliminar= $(this).data('id');

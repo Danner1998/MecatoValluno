@@ -23,7 +23,7 @@ $datos3= $conexion->query("select productos_venta.*,
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Plantilla de contacto</title>
+    <title>Factura</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="images/logo.png">
@@ -46,14 +46,7 @@ $datos3= $conexion->query("select productos_venta.*,
   
   <div class="site-wrap">
   <?php include("./layouts/header.php"); ?> 
-  <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0"><a href="http://localhost/MecatoValluno/index1.php">Salir</a> <span class="mx-2 mb-0">/</span>
-           <strong class="text-black">Tienda</strong></div>
-        </div>
-      </div>
-    </div>
+
     <div class="site-section">
       <div class="container">
         <div class="row">
@@ -74,19 +67,19 @@ $datos3= $conexion->query("select productos_venta.*,
 
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_fname" class="text-black">Nombre :&nbsp; <?php echo $datosUsuario[4];?></label>
+                    <label for="c_fname" class="text-black">Nombre :&nbsp; <?php echo $datosUsuario[7];?></label>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_fname" class="text-black">Email :&nbsp; <?php echo $datosUsuario[6];?></label>
+                    <label for="c_fname" class="text-black">Email :&nbsp; <?php echo $datosUsuario[9];?></label>
                   </div>
                 </div>
-<!--
+
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_fname" class="text-black">telefono :&nbsp; <?php echo $datosUsuario[5];?></label>
+                    <label for="c_fname" class="text-black">telefono :&nbsp; <?php echo $datosUsuario[8];?></label>
                   </div>
                 </div>
 
@@ -108,7 +101,7 @@ $datos3= $conexion->query("select productos_venta.*,
                     <label for="c_fname" class="text-black">Estado :&nbsp; <?php echo $datosEnvio[4];?></label>
                   </div>
                 </div>
--->
+
            
               </div>
             </form>
@@ -123,13 +116,13 @@ $datos3= $conexion->query("select productos_venta.*,
             <img src=" ./images/<?php echo $f['imagen'];?>" width="50px"/><br>
               <span class="d-block text-primary h6 text-uppercase"><?php echo $f['nombre_producto'];?></span> <br>
               <span class="d-block text-primary h6 text-uppercase">Cantidad :&nbsp;<?php echo $f['cantidad'];?></span>
-              <span class="d-block text-primary h6 text-uppercase">Precio :&nbsp; <?php echo $f['precio'];?></span>
-              <span class="d-block text-primary h6 text-uppercase">Subtotal :&nbsp; <?php echo $f['subtotal'];?></span>
+              <span class="d-block text-primary h6 text-uppercase">Precio :&nbsp; <?php echo number_format($f['precio'],3,'.','');?></span>
+              <span class="d-block text-primary h6 text-uppercase">Subtotal :&nbsp; <?php echo number_format($f['subtotal'],3,'.','');?></span>
             </div>
             </div>
             <?php    } ?>
 
-            <h4>Total:&nbsp; <?php echo $datosUsuario[2];?></h4>
+            <h4>Total:&nbsp; <?php echo number_format($datosUsuario[2],3,'.','');?></h4>
 
           </div>
         </div>

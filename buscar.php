@@ -12,7 +12,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Tienda</title>
+    <title>Busqueda</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -89,7 +89,7 @@ session_start();
                   <div class="block-4-text p-4">
                     <h3><a href="shop-single.php?id=<?php echo $fila['id'];?>"><?php echo $fila['nombre'];?></a></h3>
                     <p class="mb-0"><?php echo $fila['descripcion'];?></p>
-                    <p class="text-primary font-weight-bold">$<?php echo $fila['precio'];?></p>
+                    <p class="text-primary font-weight-bold">$<?php echo number_format($fila['precio'],3,'.','');?></p>
                   </div>
                 </div>
               </div>
@@ -153,62 +153,8 @@ session_start();
               
               </ul>
             </div>
-        </div>
-            </div>
-
-        <div class="site-section site-blocks-2">
-      <div class="container">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Categorias</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-            <a class="block-2-item" href="#">
-              <figure class="image">
-                <img src="images/detalles-empresariales.png" alt="" class="img-fluid">
-              </figure>
-              <div class="text">
-                <span class="text-uppercase">Mecato </span>
-                <h3>Sorpresa</h3>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-            <a class="block-2-item" href="#">
-              <figure class="image">
-                <img src="images/Imagen1.png" alt="" class="img-fluid">
-              </figure>
-              <div class="text">
-                <span class="text-uppercase">Mecato </span>
-                <h3>Románticos</h3>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-            <a class="block-2-item" href="#">
-              <figure class="image">
-                <img src="images/regalos-personales.png" alt="" class="img-fluid">
-              </figure>
-              <div class="text">
-                <span class="text-uppercase">Mecato</span>
-                <h3>Infantiles</h3>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-    <?php include("./layouts/footer.php"); ?> 
-  </div>
-
+        </div></div>
+  <?php include("./layouts/footer.php");?> 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>

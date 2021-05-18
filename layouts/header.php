@@ -63,7 +63,7 @@
             <li><a href="info.php">Quienes Somos</a></li>
             <li><a href="pago.php">Como Comprar</a></li>
             <li><a href="contact.php">Contactenos</a></li>
-            <li><a href="contact.html">Ubicación</a></li>
+            <li><a href="poli.php">Políticas</a></li>
           </ul>
         </div>
       </nav>

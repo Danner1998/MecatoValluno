@@ -28,9 +28,23 @@ values(
 ")or die($conexion->error);
   $id_usuario = $conexion->insert_id;
 
+  $conexion->query("insert into cliente (nombre,telefono,email,password,img_perfil,nivel)  
+  values(
+    '".$_POST['c_fname']." ".$_POST['c_lname']."',
+    '".$_POST['c_phone']."',
+    '".$_POST['c_email_address']."',
+    '".sha1($password)."',
+    'defaul.jpg',
+    'cliente'
+  
+  )  
+  ")or die($conexion->error);
+    $id_cliente = $conexion->insert_id;
+
+
 
   $fecha = date('Y-m-d h:m:s');
-  $conexion -> query("insert into ventas(id_usuario,total,fecha) values($id_usuario,$total,'$fecha')")or die($conexion->error);
+  $conexion -> query("insert into ventas(id_usuario,total,fecha,id_cliente) values($id_usuario,$total,'$fecha', $id_cliente)")or die($conexion->error);
   $id_venta = $conexion ->insert_id;
   for($i=0; $i<count($arreglo);$i++){
     $conexion -> query("insert into productos_venta (id_venta,id_producto,cantidad,precio,subtotal)
@@ -54,6 +68,13 @@ $conexion->query(" insert into envios(pais,compania,direcion,estado,cp,id_venta)
   $id_venta
 )
 ")or die($conexion->error);
+
+if(isset($_POST['id_cupon'])){
+    if($_POST['id_cupon']!=""){
+        $conexion->query("update cupones set status ='utilizado' where id=".$_POST['id_cupon'])or die($conexion->error);
+        $conexion->query("update ventas set id_cupon =".$_POST['id_cupon']." where id=".$id_venta['id_cupon'])or die($conexion->error);
+    }
+}
 include "./php/mail.php";
   unset($_SESSION['carrito']);
 ?>
@@ -61,7 +82,7 @@ include "./php/mail.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-   <title>Tienda</title>
+   <title>Compra Completada</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -81,14 +102,7 @@ include "./php/mail.php";
   
   <div class="site-wrap">
    <?php include("./layouts/header.php"); ?> 
-   <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0"><a href="http://localhost/MecatoValluno/index1.php">Salir</a> <span class="mx-2 mb-0">/</span>
-           <strong class="text-black">Tienda</strong></div>
-        </div>
-      </div>
-    </div>
+
 
     <div class="site-section">
       <div class="container">

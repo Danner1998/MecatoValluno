@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -58,68 +59,8 @@
           </div>
         </div>
       </div>
-    </div>
-
- 
-    <div class="site-section site-blocks-2">
-      <div class="container">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Categorias</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-            <a class="block-2-item" href="buscar.php?texto=Sorpresa">
-              <figure class="image">
-                <img src="images/detalles-empresariales.png" alt="" class="img-fluid">
-              </figure>
-              <div class="text">
-                <span class="text-uppercase">Mecato </span>
-                <h3>Sorpresa</h3>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-            <a class="block-2-item" href="buscar.php?texto=Románticos">
-              <figure class="image">
-                <img src="images/Imagen1.png" alt="" class="img-fluid">
-              </figure>
-              <div class="text">
-                <span class="text-uppercase">Mecato </span>
-                <h3>Románticos</h3>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-            <a class="block-2-item" href="buscar.php?texto=Infantiles">
-              <figure class="image">
-                <img src="images/regalos-personales.png" alt="" class="img-fluid">
-              </figure>
-              <div class="text">
-                <span class="text-uppercase">Mecato</span>
-                <h3>Infantiles</h3>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-    </div>
-
-
-
-
-
-
-    <?php include("./layouts/footer.php"); ?> 
-  </div>
-
+    </div></div>
+  <?php include("./layouts/footer.php");?> 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>

@@ -68,7 +68,7 @@ if(isset($_SESSION['carrito'])){
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Tienda </title>
+    <title>Agregar Compra</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -91,14 +91,7 @@ if(isset($_SESSION['carrito'])){
   
   <div class="site-wrap">
   <?php include("./layouts/header.php"); ?> 
-  <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0"><a href="http://localhost/MecatoValluno/index1.php">Salir</a> <span class="mx-2 mb-0">/</span>
-           <strong class="text-black">Tienda</strong></div>
-        </div>
-      </div>
-    </div>
+
 
     <div class="site-section">
       <div class="container">
@@ -132,24 +125,24 @@ if(isset($_SESSION['carrito'])){
                     <td class="product-name">
                       <h2 class="h5 text-black"><?php echo $arregloCarrito[$i]['Nombre']; ?></h2>
                     </td>
-                    <td>$<?php echo $arregloCarrito[$i]['Precio']; ?></td>
+                    <td>$<?php echo number_format($arregloCarrito[$i]['Precio'],3,'.',''); ?></td>
                     <td>
                       <div class="input-group mb-3" style="max-width: 120px;">
                         <div class="input-group-prepend">
                           <button class="btn btn-outline-primary js-btn-minus btnIncrementar" type="button">&minus;</button>
                         </div>
-                        <input type="text" class="form-control text-center txtCantidad" 
-                        data-precio="<?php echo $arregloCarrito[$i]['Precio']; ?>"
+                        <input  type="text" class="form-control text-center txtCantidad" 
+                        data-precio="<?php echo  $arregloCarrito[$i]['Precio']; ?>"
                         data-id="<?php echo $arregloCarrito[$i]['Id']; ?>"
                         value="<?php echo $arregloCarrito[$i]['Cantidad']; ?>" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                         <div class="input-group-append">
-                          <button class="btn btn-outline-primary js-btn-plus btnIncrementar" type="button">&plus;</button>
+                          <button  class="btn btn-outline-primary js-btn-plus btnIncrementar" type="button">&plus;</button>
                         </div>
                       </div>
 
                     </td>
                     <td class="cant<?php echo $arregloCarrito[$i]['Id']; ?>">
-                    $<?php echo $arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad']; ?></td>
+                    $<?php echo number_format($arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad'],3,'.',''); ?></td>
                     <td><a href="#" class="btn btn-primary btn-sm btnEliminar" data-id="<?php echo $arregloCarrito[$i]['Id'];?>">X</a></td>
                   </tr>
                    
@@ -165,22 +158,10 @@ if(isset($_SESSION['carrito'])){
           <div class="col-md-6">
             <div class="row mb-5">
               <div class="col-md-6 mb-3 mb-md-0">
-                <button class="btn btn-primary btn-sm btn-block">Actualización de la compra</button>
+                <button onclick="window.location='cart.php'" class="btn btn-primary btn-sm btn-block">Actualizar Compra</button>
               </div>
               <div class="col-md-6">
-                <button class="btn btn-outline-primary btn-sm btn-block">Seguir comprando</button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <label class="text-black h4" for="coupon">Cupón</label>
-                <p>Ingrese su código de cupón si tiene uno.</p>
-              </div>
-              <div class="col-md-8 mb-3 mb-md-0">
-                <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-primary btn-sm">Aplicar cupón</button>
+                <button onclick="window.location='index1.php'" class="btn btn-outline-primary btn-sm btn-block">Seguir comprando</button>
               </div>
             </div>
           </div>
@@ -197,7 +178,7 @@ if(isset($_SESSION['carrito'])){
                     <span class="text-black">Subtotal</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black">$<?php echo $total;?></strong>
+                    <strong class="text-black">$<?php echo number_format($total,3,'.','');?></strong>
                   </div>
                 </div>
                 <div class="row mb-5">
@@ -205,7 +186,7 @@ if(isset($_SESSION['carrito'])){
                     <span class="text-black">Total</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black">$<?php echo $total;?></strong>
+                    <strong class="text-black">$<?php echo number_format($total,3,'.','');?></strong>
                   </div>
                 </div>
 
