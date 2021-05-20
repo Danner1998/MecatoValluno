@@ -28,14 +28,15 @@ values(
 ")or die($conexion->error);
   $id_usuario = $conexion->insert_id;
 
-  $conexion->query("insert into cliente (nombre,telefono,email,password,img_perfil,nivel)  
+  $conexion->query("insert into cliente (nombre,telefono,email,nivel,pais,ciudad)  
   values(
     '".$_POST['c_fname']." ".$_POST['c_lname']."',
     '".$_POST['c_phone']."',
     '".$_POST['c_email_address']."',
-    '".sha1($password)."',
-    'defaul.jpg',
-    'cliente'
+    'cliente',
+    '".$_POST['country']."',
+    '".$_POST['c_state_country']."'
+
   
   )  
   ")or die($conexion->error);

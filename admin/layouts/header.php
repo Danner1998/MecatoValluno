@@ -204,7 +204,7 @@
             <a href="./informe.php" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
-              Informe
+              Informe de Ventas
               </p>
             </a>
           </li>
