@@ -94,15 +94,6 @@
           </li>
 
           <li class="nav-item">
-            <a href="./solicitud.php" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-              solicitud de Permisos
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
             <a href="./paises.php" class="nav-link">
               <i class="nav-icon fas fa-globe-americas"></i>
               <p>
@@ -140,21 +131,22 @@
 
           <li class="nav-item">
             <a href="./mano.php" class="nav-link">
-              <i class="nav-icon fas fa-people-carry"></i>
+              <i class="nav-icon fas fa-boxes"></i>
               <p>
-              Mano de Obra
+              Materia Prima
               </p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="./mano2.php" class="nav-link">
-              <i class="nav-icon fas fa-people-carry"></i>
+            <a href="./productos.php" class="nav-link">
+              <i class="nav-icon fas fa-shopping-bag"></i>
               <p>
-              Mano de Obra
+                Productos
               </p>
             </a>
           </li>
+
 
           <li class="nav-item">
             <a href="./pedidos.php" class="nav-link">
@@ -165,15 +157,8 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="./productos.php" class="nav-link">
-              <i class="nav-icon fas fa-shopping-bag""></i>
-              <p>
-                Productos
-              </p>
-            </a>
-          </li>
 
+<!--
           <li class="nav-item">
             <a href="./cupones.php" class="nav-link">
               <i class="nav-icon fas fa-barcode"></i>
@@ -183,7 +168,7 @@
             </a>
           </li>
 
-
+-->
 
 
 
@@ -192,7 +177,7 @@
 
      
           <li class="nav-item">
-            <a href="./solicitudes.php" class="nav-link">
+            <a href="./datos.php" class="nav-link">
               <i class="nav-icon fas fa-user-edit"></i>
               <p>
               Actualizacion
@@ -208,6 +193,18 @@
               </p>
             </a>
           </li>
+
+
+
+          <li class="nav-item">
+            <a href="./buzon.php" class="nav-link">
+              <i class="nav-icon fas fa-mail-bulk"></i>
+              <p>
+              Buzones
+              </p>
+            </a>
+          </li>
+
 
           <li class="nav-item">
             <a href="../php/cerrar_serion.php" class="nav-link">

@@ -5,12 +5,12 @@ if(!isset($_SESSION['datos_login'])){
   header("Location: ../admin/");
 }
 $arregloUsuario = $_SESSION['datos_login'];
-if($arregloUsuario['nivel']!='admin'){
+if($arregloUsuario['nivel']!='admin' && $arregloUsuario['nivel']!='asesor' && $arregloUsuario['nivel']!='vende' && $arregloUsuario['nivel']!='gerente') {
   header("Location: ../admin/");
 }
 $resultado = $conexion ->query("
     select ventas.*, cliente.nombre, cliente.telefono, cliente.email
-    , cliente.pais , cliente.ciudad   from
+    , cliente.pais , cliente.estado   from
     ventas 
     inner join cliente on ventas.id_cliente = cliente.id
     order by id DESC")or die($conexion->error);
@@ -47,6 +47,7 @@ $resultado = $conexion ->query("
   <link rel="stylesheet" href="./personas/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="./personas/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -66,9 +67,11 @@ $resultado = $conexion ->query("
             <h1 class="m-0" style="text-align: center;">Productos</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-          <i class="fas fa-cart-plus"></i> Insertar Producto
+          <button onclick="window.location='../pdf/ventaa.php'"  type="button" class="btn " >
+          <i class="fas fa-file-pdf"></i> Imprimir Informe
 </button>
+
+
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -77,7 +80,7 @@ $resultado = $conexion ->query("
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+      <div id="tabla">
       <?php
         if(isset($_GET['error'])){
        ?>
@@ -123,7 +126,7 @@ $resultado = $conexion ->query("
       <td><?php echo $f['email'];?></td>
       <td><?php echo $f['fecha'];?> </td>
       <td><?php echo $f['pais'];?> </td>
-      <td><?php echo $f['ciudad'];?> </td>
+      <td><?php echo $f['estado'];?> </td>
       <td><?php echo $f['total'];?> </td>
 
       </tr>
@@ -138,81 +141,6 @@ $resultado = $conexion ->query("
     <!-- /.content -->
   </div>
 
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-    <form action="../php/insertarproducto.php" method="POST" enctype="multipart/form-data">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Insertar Producto</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-<div class="form-group">
-
-        <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" placeholder="nombre" id="nombre" class="form-control"required>
-
-</div>
-
-<div class="form-group">
-
-        <label for="descripcion">Descripcion</label>
-        <input type="text" name="descripcion" placeholder="descripcion" id="descripcion" class="form-control"required>
-
-</div>
-
-<div class="form-group">
-
-        <label for="imagen">Imagen</label>
-        <input type="file" name="imagen"  id="imagen" class="form-control"required>
-
-</div>
-
-
-<div class="form-group">
-      <label for="precio">Precio</label>
-      <input type="number" min="0" name="precio" placeholder="precio" id="precio" class="form-control"required>
-
-  </div>
-
-
-  <div class="form-group">
-      <label for="inventario">Inventario</label>
-      <input type="number"  min="0" name="inventario" placeholder="inventario" id="inventario" class="form-control"required>
-
-  </div>
-
-  <div class="form-group">
-      <label for="categoria">Categoria</label>
-     <select name="categoria" id="categoria" class="form-control" required>
-     <?php
-     $res= $conexion->query("select * from categorias");
-     while($f=mysqli_fetch_array($res)){
-     echo '<option value="'.$f['id'].'">'.$f['nombre'].'</option>';
-
-    }
-     ?>
-     </select>
-
-  </div>
-
-
-
-
-
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
 
 
 

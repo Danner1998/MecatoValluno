@@ -5,19 +5,11 @@ if(!isset($_SESSION['datos_login'])){
   header("Location: ../admin/");
 }
 $arregloUsuario = $_SESSION['datos_login'];
-if($arregloUsuario['nivel']!='admin'){
-  header("Location: ../admin/");
-}
-$resultado = $conexion ->query("select * from usuario where id order by id DESC")or die($conexion->error);
-
-
-
+if($arregloUsuario['nivel']!='admin' && $arregloUsuario['nivel']!='gerente'){
+  header("Location: ../admin/");}
 ?>
 
-
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,6 +35,7 @@ $resultado = $conexion ->query("select * from usuario where id order by id DESC"
   <link rel="stylesheet" href="./personas/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="./personas/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -51,347 +44,46 @@ $resultado = $conexion ->query("select * from usuario where id order by id DESC"
 
 <?php include "./layouts/header.php";?>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="offset-xl-3 col-xl-6">
-            <h1 class="m-0" style="text-align: center">Panel de Administracion de Usuarios</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-
-<button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalCenter1">
-          <i class="nav-icon fas fa-user-tie"></i> Insertar Empleados
+<div class="content-wrapper">
+<button type="button" class="btn btn-outline" data-toggle="modal" onclick="window.location='../admin/mano.php'" >
+          
+          <i ></i> Regresar
 </button>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-      <?php
-        if(isset($_GET['error'])){
-       ?>
-   <div class="alert alert-danger" role="alert">
-   <?php echo $_GET['error'];?>
-        </div>
+<section>
 
-        <?php }   ?>
-
-        <?php
-        if(isset($_GET['success'])){
-       ?>
-   <div class="alert alert-success" role="alert">
-       Se ha insertado correctamente.
-        </div>
-
-        <?php }   ?>
-      <table class="table">
-      <thead>
-      <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-      <th>Telefono</th>
-      <th>Correo</th>
-      <th>Congtraeña</th>
-      <th>Roles</th>
-
-      </tr>
-      </thead>
-
-      <tbody>
-      <tr>
-      <?php
-        while($f = mysqli_fetch_array($resultado)){
-         
-      ?>
-
-      <td><?php echo $f['id'];?></td>
-      <td>
-      <?php echo $f['nombre'];?></td>
-      <td><?php echo $f['telefono'];?></td>
-      <td><?php echo $f['email'];?></td>
-      <td><?php echo $f['password'];?></td>
-      <td><?php echo $f['nivel'];?> </td>
-      <td>
-
-      <button class="btn btn-outline-warning btn-small btnEditar"  
-                          data-id="<?php echo $f['id']; ?>"
-                          data-nombre="<?php echo $f['nombre']; ?>"
-                          data-telefono="<?php echo $f['telefono']; ?>"
-                          data-email="<?php echo $f['email']; ?>"
-                          data-password="<?php echo $f['password']; ?>"
-                          data-nivel="<?php echo $f['nivel']; ?>"
-                          data-toggle="modal" data-target="#modalEditar">
-                          <i class="fa fa-edit"></i>
-                        </button>
-
-
-
-      <button class="btn btn-outline-danger btn-small btnEliminar"
-      data-id="<?php echo $f['id'];?>"
-       data-toggle="modal" data-target="#modalEliminar">
-       <i class="fa fa-trash"></i>
-      </button>
-      </td>
-      </tr>
-      <?php
-               }
-          ?>
-      </tbody>
-      </table>
-    
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-    
-  </div>
-
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-    <form action="../php/insertarUsuario.php" method="POST" enctype="multipart/form-data">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Insertar Cliente</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-
-      <div class="form-group">
-
-        <label for="c_fname">Nombres</label>
-        <input type="text" name="c_fname" placeholder="Ingresar Nombres" id="c_fname" class="form-control"required>
-
-      </div>
-      <div class="form-group">
-
-        <label for="c_lname">Apellidos</label>
-        <input type="text" name="c_lname" placeholder="Ingresar Apellidos" id="c_lname" class="form-control"required>
-
-        </div>
-
-
-        <div class="form-group">
-
-        <label for="c_phone">Telefono</label>
-        <input type="text" name="c_phone" placeholder="Ingresar Telefono" id="c_phone" class="form-control"required>
-
-          </div>
-
-          <div class="form-group">
-
-        <label for="c_email_address">Correo</label>
-        <input type="text" name="c_email_address" placeholder="Ingresar Correo" id="c_email_address" class="form-control"required>
-
-          </div>
-
-
-          <div class="form-group">
-
-        <label for="c_account_password">Contraseña</label>
-        <input type="text" name="c_account_password" placeholder="Ingresar Contraseña" id="c_account_password" class="form-control"required>
-
-            </div>
-
-
-
-
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-outline-success">Guardar</button>
+<div class="contendor">
+        <div id="tabla">
         
-      </div>
-      </form>
+            <table>
+            <thead>
+                <tr>
+                    <th>Meses</th>
+                    <th>Total de Materia Prima</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+            $total = 0;
+            require_once 'Clases.php';
+            $producto = new Producto();
+            $datos = $producto->CantidadProductosProveedores();
+            for($i=0; $i<sizeof($datos); $i++)
+            {
+                echo  '<tr><td>'.$datos[$i]["nombre"].'</td><td>'.$datos[$i]["mes3"].'</td></tr>';
+                $total = $total + $datos[$i]["mes3"];   
+                                         
+            }
+            ?>
+                <tr><td>TOTAL:</td><td><?php echo number_format($total,3,'.','');?></td></tr>
+                
+            </tbody>
+            
+        </table>
     </div>
-  </div>
+</section>
+
 </div>
-
-<!-- insertar 2 --->
-
-<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-    <form action="../php/insertarEmpleado.php" method="POST" enctype="multipart/form-data">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Insertar Empleado</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-
-      <div class="form-group row">
-      <div class="col-md-5">
-              <br>
-              <h>Total de Horas</h>
-                </div>
-                <div class="col-md-2">
-                <h>Mes 1</h>
-                  <input type="text" class="form-control" id="c_fname" name="c_fname">
-                </div>
-                <div class="col-md-2">
-                <h>Mes 2</h>
-                  <input type="text" class="form-control" id="c_lname" name="c_lname">
-                </div>
-                <div class="col-md-2">
-                <h>Mes 3</h>
-                  <input type="text" class="form-control" id="c_lname" name="c_lname">
-                </div>
-              </div>
-
-      <div class="form-group row">
-      <div class="col-md-5">
-              <br>
-              <h>Horas trabajadas</h>
-                </div>
-                <div class="col-md-2">
-                  <input type="text" class="form-control" id="c_fname" name="c_fname">
-                </div>
-                <div class="col-md-2">
-                  <input type="text" class="form-control" id="c_lname" name="c_lname">
-                </div>
-                <div class="col-md-2">
-                  <input type="text" class="form-control" id="c_lname" name="c_lname">
-                </div>
-              </div>
-
-              <div class="form-group row">
-      <div class="col-md-5">
-              <br>
-              <h>Costo de Materia </h>
-                </div>
-                <div class="col-md-2">
-                  <input type="text" class="form-control" id="c_fname" name="c_fname">
-                </div>
-                <div class="col-md-2">
-                  <input type="text" class="form-control" id="c_lname" name="c_lname">
-                </div>
-                <div class="col-md-2">
-                  <input type="text" class="form-control" id="c_lname" name="c_lname">
-                </div>
-              </div>
-
-
-              <div class="form-group row">
-      <div class="col-md-5">
-              <br>
-              <h>Cantidad de Materia</h>
-                </div>
-                <div class="col-md-2">
-                  <input type="text" class="form-control" id="c_fname" name="c_fname">
-                </div>
-                <div class="col-md-2">
-                  <input type="text" class="form-control" id="c_lname" name="c_lname">
-                </div>
-                <div class="col-md-2">
-                  <input type="text" class="form-control" id="c_lname" name="c_lname">
-                </div>
-              </div>
-
-
-
-
-
-
-
-      </div>
-      <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-outline-success">Guardar</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- eliminar --->
-
-<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
- 
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalEliminar">Eliminar Usario</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      ¿Desea Eliminar el Usuario?
-   </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-outline-danger eliminar" data-dismiss="modal">Eliminar</button>
-        
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-   <!-- Modal Editar -->
-   <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditar" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <form action="../php/editarUsuario.php" method="POST" enctype="multipart/form-data">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalEditar">Editar Usuario</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <input type="hidden" id="idEdit" name="id">
-             
-              <div class="form-group">
-                  <label for="nombreEdit">Nombre</label>
-                  <input type="text" name="nombre" placeholder="Nombre Completo" id="nombreEdit" class="form-control" required>
-              </div>
-
-              
-              <div class="form-group">
-                  <label for="telefonoEdit">Telefono</label>
-                  <input type="text" name="telefono" placeholder="Numero Telefono" id="telefonoEdit" class="form-control" required>
-              </div>
-              <div class="form-group">
-                  <label for="correoEdit">Correo</label>
-                  <input type="text" name="email" placeholder="Correo Eletronico" id="correoEdit" class="form-control" required>
-              </div>
-              <div class="form-group">
-                  <label for="contraseñaEdit">Contraeña</label>
-                  <input type="text"  name="password" placeholder="Contraseña" id="contraseñaEdit" class="form-control" required>
-              </div>
-              <div class="form-group">
-                  <label for="rolEdit">Roles</label>
-                  <input type="text"  name="nivel" placeholder="Rol Usuario" id="rolEdit" class="form-control" required>
-              </div>
-
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-outline-success editar">Guardar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div> 
-
-
   <?php include "./layouts/footer.php";?>
   <!-- /.control-sidebar -->
 </div>

@@ -15,20 +15,31 @@ if(isset($_POST['c_account_password'])){
   }
 }
 $encpass = password_hash($password, PASSWORD_BCRYPT);
-$conexion->query("insert into usuario (nombre,telefono,email,password,img_perfil,nivel)  
-values(
-  '".$_POST['c_fname']." ".$_POST['c_lname']."',
-  '".$_POST['c_phone']."',
-  '".$_POST['c_email_address']."',
-  '".sha1($password)."',
-  'defaul.jpg',
-  'cliente'
+$re = $conexion->query("select id,email from usuario where email = '".$_POST['c_email_address']."'")or die ($conexion->error);
+$id_usuario = 0;
+if(mysqli_num_rows($re)>0){
+ $fila= mysqli_fetch_row($re);
+ $id_usuario=$fila[0];
+}else{
+  $conexion->query("insert into usuario (nombre,telefono,email,password,img_perfil,nivel)  
+  values(
+    '".$_POST['c_fname']." ".$_POST['c_lname']."',
+    '".$_POST['c_phone']."',
+    '".$_POST['c_email_address']."',
+    '".sha1($password)."',
+    'defaul.jpg',
+    'cliente'
+  
+  )  
+  ")or die($conexion->error);
+    $id_usuario = $conexion->insert_id;
+}
 
-)  
-")or die($conexion->error);
-  $id_usuario = $conexion->insert_id;
 
-  $conexion->query("insert into cliente (nombre,telefono,email,nivel,pais,ciudad)  
+
+
+
+  $conexion->query("insert into cliente (nombre,telefono,email,nivel,pais,estado)  
   values(
     '".$_POST['c_fname']." ".$_POST['c_lname']."',
     '".$_POST['c_phone']."',
@@ -113,7 +124,7 @@ include "./php/mail.php";
             <h2 class="display-3 text-black">¡Gracias!</h2>
             <p class="lead mb-5">Su pedido se completó con éxito.</p>
             <p><a href="verpedido.php?id_venta=<?php echo $id_venta;?>" class="btn btn-sm btn-primary">Ver pedido</a></p>
-            <p><a href="http://localhost/MecatoValluno/index1.php" class="btn btn-sm btn-primary">Volver a la tienda</a></p>
+            <p><a href="./index1.php" class="btn btn-sm btn-primary">Volver a la tienda</a></p>
           </div>
         </div>
       </div>

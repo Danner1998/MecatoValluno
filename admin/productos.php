@@ -5,7 +5,7 @@ if(!isset($_SESSION['datos_login'])){
   header("Location: ../admin/");
 }
 $arregloUsuario = $_SESSION['datos_login'];
-if($arregloUsuario['nivel']!='admin'){
+if($arregloUsuario['nivel']!='admin' && $arregloUsuario['nivel']!='gerente' && $arregloUsuario['nivel']!='vende') {
   header("Location: ../admin/");
 }
 $resultado = $conexion ->query("
@@ -44,6 +44,7 @@ $resultado = $conexion ->query("
   <link rel="stylesheet" href="./personas/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="./personas/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -63,7 +64,7 @@ $resultado = $conexion ->query("
             <h1 class="m-0" style="text-align: center;">Productos</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+          <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalCenter">
           <i class="fas fa-cart-plus"></i> Insertar Producto
 </button>
           </div><!-- /.col -->
@@ -74,7 +75,7 @@ $resultado = $conexion ->query("
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+      <div id="tabla">
       <?php
         if(isset($_GET['error'])){
        ?>
@@ -101,6 +102,7 @@ $resultado = $conexion ->query("
       <th>Precio</th>
       <th>Inventario</th>
       <th>Categoria</th>
+      <th>Edicion</th>
       </tr>
       </thead>
 
@@ -121,7 +123,7 @@ $resultado = $conexion ->query("
       <td><?php echo $f['catego'];?> </td>
       <td>
 
-      <button class="btn btn-primary btn-small btnEditar"  
+      <button class="btn btn-outline-warning btn-small btnEditar"  
                           data-id="<?php echo $f['id']; ?>"
                           data-nombre="<?php echo $f['nombre']; ?>"
                           data-descripcion="<?php echo $f['descripcion']; ?>"
@@ -133,7 +135,7 @@ $resultado = $conexion ->query("
                         </button>
 
 
-      <button class="btn btn-danger btn-small btnEliminar"
+      <button class="btn btn-outline-danger btn-small btnEliminar"
       data-id="<?php echo $f['id'];?>"
        data-toggle="modal" data-target="#modalEliminar">
        <i class="fa fa-trash"></i>
@@ -219,8 +221,8 @@ $resultado = $conexion ->query("
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-outline-success">Guardar</button>
       </div>
       </form>
     </div>
@@ -243,8 +245,8 @@ $resultado = $conexion ->query("
       ¿Deseaeliminar el producto?
    </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-danger eliminar" data-dismiss="modal">Eliminar</button>
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-outline-success" data-dismiss="modal">Eliminar</button>
       </div>
 
     </div>
@@ -299,8 +301,8 @@ $resultado = $conexion ->query("
               </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary editar">Guardar</button>
+            <button type="button" class="btn btn-outline-dark data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-outline-success editar">Guardar</button>
           </div>
         </form>
       </div>

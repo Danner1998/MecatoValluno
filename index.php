@@ -38,7 +38,7 @@
           <div class="col-md-1"></div>
           <div class="col-md-5">   
             <div class="site-section-heading pt-3 mb-4">
-              <h2 class="text-black">Mecato Vallunos</h2>
+              <h2 class="text-black">Mecato Valluno</h2>
             </div>
             <p>Encuentra detalles personales muy originales para sorprender a tu pareja, familiares y amigos en cualquier ocasión especial. No busques más, los regalos personales de Mecatos Vallunos expresarán todo lo que sientes hacia los que más quieres.</p>
             <p>

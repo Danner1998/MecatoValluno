@@ -5,10 +5,10 @@ if(!isset($_SESSION['datos_login'])){
   header("Location: ../admin/");
 }
 $arregloUsuario = $_SESSION['datos_login'];
-if($arregloUsuario['nivel']!='admin'){
+if($arregloUsuario['nivel']!='admin' && $arregloUsuario['nivel']!='asesor'){
   header("Location: ../admin/");
 }
-$resultado = $conexion ->query("select * from cliente where id order by id DESC")or die($conexion->error);
+$resultado = $conexion ->query("SELECT * FROM `usuario` WHERE nivel = 'cliente'")or die($conexion->error);
 
 
 
@@ -43,6 +43,7 @@ $resultado = $conexion ->query("select * from cliente where id order by id DESC"
   <link rel="stylesheet" href="./personas/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="./personas/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -69,7 +70,7 @@ $resultado = $conexion ->query("select * from cliente where id order by id DESC"
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+      <div id="tabla">
       <?php
         if(isset($_GET['error'])){
        ?>
@@ -95,8 +96,7 @@ $resultado = $conexion ->query("select * from cliente where id order by id DESC"
       <th>Telefono</th>
       <th>Correo</th>
       <th>Roles</th>
-      <th>Estado</th>
-      <th>Informes</th>
+      <th>Edicion</th>
 
       </tr>
       </thead>
@@ -114,20 +114,9 @@ $resultado = $conexion ->query("select * from cliente where id order by id DESC"
       <td><?php echo $f['telefono'];?></td>
       <td><?php echo $f['email'];?></td>
       <td><?php echo $f['nivel'];?> </td>
-      <td><?php echo $f['estado'];?> </td>
-      <td><?php echo $f['informe'];?> </td>
       <td>
 
-      <button class="btn btn-outline-warning btn-small btnEditar"  
-                          data-id="<?php echo $f['id']; ?>"
-                          data-nombre="<?php echo $f['nombre']; ?>"
-                          data-telefono="<?php echo $f['telefono']; ?>"
-                          data-email="<?php echo $f['email']; ?>"
-                          data-nivel="<?php echo $f['nivel']; ?>"
-                          data-estado="<?php echo $f['estado']; ?>"
-                          data-toggle="modal" data-target="#modalEditar">
-                          <i class="fa fa-edit"></i>
-                        </button>
+
 
 
 
@@ -178,49 +167,6 @@ $resultado = $conexion ->query("select * from cliente where id order by id DESC"
 </div>
 
 
-   <!-- Modal Editar -->
-   <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditar" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <form action="../php/editarCliente.php" method="POST" enctype="multipart/form-data">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalEditar">Solicitar Peticion</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <input type="hidden" id="idEdit" name="id">
-             
-
-
-              <div class="form-group">
-                  <label for="estadoEdit">Solicitu del Estado</label>
-                  
-                  <input type="text"  name="estado" placeholder="Estado del Usuario" id="estadoEdit" class="form-control" required>
-                   
-              </div>
-
-
-              <div class="form-group">
-                  <label for="notaEdit">Escribir Especificaciones </label>
-                  
-                  <input type="text"  name="nota" placeholder="Estado del Usuario" id="notaEdit" class="form-control" required>
-                   
-              </div>
-
-              
-
-
-          </div>
-          <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-outline-success editar">Guardar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div> 
 
 
   <?php include "./layouts/footer.php";?>
@@ -272,7 +218,7 @@ $(document).ready(function(){
   } );
   $(".eliminar").click(function(){
     $.ajax({
-      url: '../php/eliminarcliente.php',
+      url: '../php/eliminarUsuario.php',
       method: 'POST',
       data:{
         id:idEliminar
@@ -283,24 +229,7 @@ $(document).ready(function(){
     });
 
   });
-  $(".btnEditar").click(function(){
-      idEditar=$(this).data('id');
-      var nombre=$(this).data('nombre');
-      var telefono=$(this).data('telefono'); 
-      var email=$(this).data('email');
-      var password=$(this).data('password');
-      var nivel=$(this).data('nivel');
-      var estado=$(this).data('estado');
-      var nota=$(this).data('nota');
-      $("#nombreEdit").val(nombre);
-      $("#telefonoEdit").val(telefono);
-      $("#correoEdit").val(email);
-      $("#contraseñaEdit").val(password);
-      $("#rolEdit").val(nivel);
-      $("#estadoEdit").val(estado);
-      $("#notaEdit").val(nota);
-      $("#idEdit").val(idEditar);
-    });
+
 
 });
 </script>

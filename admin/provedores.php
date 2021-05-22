@@ -5,7 +5,7 @@ if(!isset($_SESSION['datos_login'])){
   header("Location: ../admin/");
 }
 $arregloUsuario = $_SESSION['datos_login'];
-if($arregloUsuario['nivel']!='admin'){
+if($arregloUsuario['nivel']!='admin' && $arregloUsuario['nivel']!='director'){
   header("Location: ../admin/");
 }
 $resultado = $conexion ->query("select * from provedores where id order by id DESC")or die($conexion->error);
@@ -43,6 +43,8 @@ $resultado = $conexion ->query("select * from provedores where id order by id DE
   <link rel="stylesheet" href="./personas/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="./personas/plugins/summernote/summernote-bs4.min.css">
+  
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -75,7 +77,7 @@ $resultado = $conexion ->query("select * from provedores where id order by id DE
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+      <div  id="tabla" >
       <?php
         if(isset($_GET['error'])){
        ?>
@@ -102,6 +104,7 @@ $resultado = $conexion ->query("select * from provedores where id order by id DE
       <th>Correo</th>
       <th>Pais</th>
       <th>Ciudad</th>
+      <th>Edicion</th>
 
       </tr>
       </thead>

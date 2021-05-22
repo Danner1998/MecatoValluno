@@ -43,8 +43,10 @@ $resultado = $conexion ->query("select * from usuario where id order by id DESC"
   <link rel="stylesheet" href="./personas/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="./personas/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -62,12 +64,11 @@ $resultado = $conexion ->query("select * from usuario where id order by id DESC"
             <h1 class="m-0" style="text-align: center">Panel de Administracion de Usuarios</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
+
+
           <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalCenter">
           
-          <i class="nav-icon fas fa-user"></i> Insertar Clientes
-</button>
-<button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalCenter1">
-          <i class="nav-icon fas fa-user-tie"></i> Insertar Empleados
+          <i class="nav-icon fas fa-user"></i> Insertar Usuarios
 </button>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -77,8 +78,10 @@ $resultado = $conexion ->query("select * from usuario where id order by id DESC"
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+      <div id="tabla" >
       <?php
+
+      
         if(isset($_GET['error'])){
        ?>
    <div class="alert alert-danger" role="alert">
@@ -95,15 +98,16 @@ $resultado = $conexion ->query("select * from usuario where id order by id DESC"
         </div>
 
         <?php }   ?>
-      <table class="table">
+      <table class="table table-bordered table-hover">
       <thead>
-      <tr>
+      <tr class="warning">
       <th>Id</th>
       <th>Nombre</th>
       <th>Telefono</th>
       <th>Correo</th>
       <th>Congtraeña</th>
       <th>Roles</th>
+      <th>Edicion</th>
 
       </tr>
       </thead>
@@ -123,6 +127,7 @@ $resultado = $conexion ->query("select * from usuario where id order by id DESC"
       <td><?php echo $f['password'];?></td>
       <td><?php echo $f['nivel'];?> </td>
       <td>
+
 
       <button class="btn btn-outline-warning btn-small btnEditar"  
                           data-id="<?php echo $f['id']; ?>"
@@ -206,7 +211,12 @@ $resultado = $conexion ->query("select * from usuario where id order by id DESC"
             </div>
 
 
+            <div class="form-group">
 
+<label for="niveles">Nivel</label>
+<input type="text" name="niveles" placeholder="Ingresar Nivel" id="niveles" class="form-control"required>
+
+    </div>
 
 
 
@@ -222,70 +232,6 @@ $resultado = $conexion ->query("select * from usuario where id order by id DESC"
 </div>
 
 <!-- insertar 2 --->
-
-<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-    <form action="../php/insertarEmpleado.php" method="POST" enctype="multipart/form-data">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Insertar Empleado</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-
-      <div class="form-group">
-
-        <label for="c_fname">Nombres</label>
-        <input type="text" name="c_fname" placeholder="Ingresar Nombres" id="c_fname" class="form-control"required>
-
-      </div>
-      <div class="form-group">
-
-        <label for="c_lname">Apellidos</label>
-        <input type="text" name="c_lname" placeholder="Ingresar Apellidos" id="c_lname" class="form-control"required>
-
-        </div>
-
-
-        <div class="form-group">
-
-        <label for="c_phone">Telefono</label>
-        <input type="text" name="c_phone" placeholder="Ingresar Telefono" id="c_phone" class="form-control"required>
-
-          </div>
-
-          <div class="form-group">
-
-        <label for="c_email_address">Correo</label>
-        <input type="text" name="c_email_address" placeholder="Ingresar Correo" id="c_email_address" class="form-control"required>
-
-          </div>
-
-
-          <div class="form-group">
-
-        <label for="c_account_password">Contraseña</label>
-        <input type="text" name="c_account_password" placeholder="Ingresar Contraseña" id="c_account_password" class="form-control"required>
-
-            </div>
-
-
-
-
-
-      </div>
-      <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-outline-success">Guardar</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-
 <!-- eliminar --->
 
 <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel" aria-hidden="true">

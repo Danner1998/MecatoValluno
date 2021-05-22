@@ -47,6 +47,7 @@ if($arregloUsuario['nivel']!='admin'){
   <link rel="stylesheet" href="./personas/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="./personas/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -73,7 +74,7 @@ if($arregloUsuario['nivel']!='admin'){
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+      <div id="tabla" >
       <?php
         if(isset($_GET['error'])){
        ?>
@@ -100,7 +101,7 @@ if($arregloUsuario['nivel']!='admin'){
       <th>Estado</th>
       <th>Compañia</th>
       <th>Direccion</th>
-
+      <th>Edicion</th>
 
 
       </tr>

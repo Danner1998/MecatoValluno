@@ -5,11 +5,14 @@ if(!isset($_SESSION['datos_login'])){
   header("Location: ../admin/");
 }
 $arregloUsuario = $_SESSION['datos_login'];
-if($arregloUsuario['nivel']!='admin'){
+if($arregloUsuario['nivel']!='admin' && $arregloUsuario['nivel']!='gerente'){
   header("Location: ../admin/");
 }
 
-$resultado = $conexion ->query("select * from totales where id order by id DESC")or die($conexion->error);
+
+$resultado = $conexion ->query("SELECT id,nombre, mes1, mes2,total,( mes1*mes2)as mes3 from totales")or die($conexion->error);
+
+
 ?>
 
 
@@ -21,7 +24,7 @@ $resultado = $conexion ->query("select * from totales where id order by id DESC"
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Productos</title>
+  <title>Materia Prima</title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -42,6 +45,7 @@ $resultado = $conexion ->query("select * from totales where id order by id DESC"
   <!-- Daterange picker -->
   <link rel="stylesheet" href="./personas/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
+  <link rel="stylesheet" href="estilo.css">
   <link rel="stylesheet" href="./personas/plugins/summernote/summernote-bs4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -59,7 +63,7 @@ $resultado = $conexion ->query("select * from totales where id order by id DESC"
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="offset-xl-3 col-xl-6">
-            <h1 class="m-0" style="text-align: center;">Productos</h1>
+            <h1 class="m-0" style="text-align: center;">Insertar Materia Prima</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
           <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalCenter">
@@ -75,7 +79,7 @@ $resultado = $conexion ->query("select * from totales where id order by id DESC"
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+      <div id="tabla">
       <?php
         if(isset($_GET['error'])){
        ?>
@@ -97,11 +101,11 @@ $resultado = $conexion ->query("select * from totales where id order by id DESC"
       <thead>
       <tr>
       <th>Id</th>
-      <th>Nombre</th>
-      <th>Mes 1</th>
-      <th>Mes 2</th>
-      <th>Mes 3</th>
+      <th>Meses </th>
+      <th>Valor</th>
+      <th>Cntidad</th>
       <th>Total</th>
+      <th>Edicion</th>
       </tr>
       </thead>
 
@@ -114,22 +118,13 @@ $resultado = $conexion ->query("select * from totales where id order by id DESC"
 
       <td><?php echo $f['id'];?></td>
       <td><?php echo $f['nombre'];?> </td>
-      <td><?php echo $f['mes1'];?></td>
+      <td><?php echo  number_format($f['mes1'],3,'.','');?></td>
       <td><?php echo $f['mes2'];?></td>
-      <td><?php echo $f['mes3'];?></td>
-      <td><?php echo $f['total'];?></td>
+      <td><?php echo number_format($f['mes3'],3,'.','');?></td>
 
       <td>
 
-      <button class="btn btn-outline-warning btn-small btnEditar"  
-                          data-id="<?php echo $f['id']; ?>"
-                          data-mes1="<?php echo $f['mes1']; ?>"
-                          data-mes2="<?php echo $f['mes2']; ?>"
-                          data-mes3="<?php echo $f['mes3']; ?>"
-                          data-total="<?php echo $f['total']; ?>"
-                          data-toggle="modal" data-target="#modalEditar">
-                          <i class="fa fa-edit"></i>
-                        </button>
+
 
 
       <button class="btn btn-outline-danger btn-small btnEliminar"
@@ -137,6 +132,10 @@ $resultado = $conexion ->query("select * from totales where id order by id DESC"
        data-toggle="modal" data-target="#modalEliminar">
        <i class="fa fa-trash"></i>
       </button>
+
+      <a href="./mano2.php" class="btn btn-success" role="button">Calculo</a>
+
+      
       </td>
       </tr>
       <?php
@@ -147,6 +146,7 @@ $resultado = $conexion ->query("select * from totales where id order by id DESC"
     
       </div><!-- /.container-fluid -->
     </section>
+    
     <!-- /.content -->
   </div>
 
@@ -155,46 +155,34 @@ $resultado = $conexion ->query("select * from totales where id order by id DESC"
     <div class="modal-content">
     <form action="../php/insertarMateria.php" method="POST" enctype="multipart/form-data">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Insertar Producto</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Insertar Materia Prima</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
 
-<div class="form-group">
-      <label for="nombre">Nombre</label>
-     <select name="nombre" id="nombre" class="form-control" required>
-     <?php
-     $res= $conexion->query("select * from calculo");
-     while($f=mysqli_fetch_array($res)){
-     echo '<option value="'.$f['id'].'">'.$f['nombre'].'</option>';
 
-    }
-     ?>
-     </select>
-
-  </div>
 
 <div class="form-group">
 
-        <label for="mes1">Mes 1</label>
-        <input type="text" name="mes1" placeholder="Mes 1" id="mes1" class="form-control"required>
+        <label for="mes1">Ingrese el Mes por favor</label>
+        <input type="text" name="mes12" placeholder="Mes" id="mes12" class="form-control"required>
 
 </div>
 
 <div class="form-group">
 
-        <label for="mes2">Mes 2</label>
-        <input type="text" name="mes2" placeholder="Mes 2" id="mes2" class="form-control"required>
+        <label for="mes2">Valor de Materia Prima</label>
+        <input type="text" name="mes22" placeholder="Valor" id="mes22" class="form-control"required>
 
 </div>
 
 
 <div class="form-group">
 
-        <label for="mes3">Mes 2</label>
-        <input type="text" name="mes3" placeholder="Mes 3" id="mes3" class="form-control"required>
+        <label for="mes3">Cantidad de Materia Prima</label>
+        <input type="text" name="mes32" placeholder="Cantidaad" id="mes32" class="form-control"required>
 
 </div>
 
@@ -233,61 +221,7 @@ $resultado = $conexion ->query("select * from totales where id order by id DESC"
 </div>
 
 
-   <!-- Modal Editar -->
-   <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditar" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <form action="../php/editarproducto.php" method="POST" enctype="multipart/form-data">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalEditar">Editar Producto</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <input type="hidden" id="idEdit" name="id">
-             
-              <div class="form-group">
-                  <label for="nombre">Nombre</label>
-                  <input type="nombreEdit" name="nombre" placeholder="nombre" id="nombreEdit" class="form-control" required>
-              </div>
-              <div class="form-group">
-                  <label for="descripcionEdit">Descripcion</label>
-                  <input type="text" name="descripcion" placeholder="descripcion" id="descripcionEdit" class="form-control" required>
-              </div>
-              <div class="form-group">
-                  <label for="imagen">Imagen</label>
-                  <input type="file" name="imagen"  id="imagen" class="form-control">
-              </div>
-              <div class="form-group">
-                  <label for="precioEdit">Precio</label>
-                  <input type="number" min="0" name="precio" placeholder="precio" id="precioEdit" class="form-control" required>
-              </div>
-              <div class="form-group">
-                  <label for="inventarioEdit">Inventario</label>
-                  <input type="number" min="0" name="inventario" placeholder="inventarioEdit" id="inventarioEdit" class="form-control" required>
-              </div>
-              <div class="form-group">
-                  <label for="categoriaEdit">Caetegoria</label>
-                  <select name="categoria" id="categoriaEdit" class="form-control" required>
-                   <?php 
-                    $res= $conexion->query("select * from categorias");
-                    while($f=mysqli_fetch_array($res)){
-                      echo '<option value="'.$f['id'].'" >'.$f['nombre'].'</option>';
-                    }
-                   ?>
-                  </select> 
-              </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary editar">Guardar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div> 
-
+ 
 
   <?php include "./layouts/footer.php";?>
   <!-- /.control-sidebar -->
@@ -330,7 +264,7 @@ $resultado = $conexion ->query("select * from totales where id order by id DESC"
 <script>
 $(document).ready(function(){
   var idEliminar= -1;
-  var idEditar= -1;
+
   var fila;
   $(".btnEliminar").click(function(){
     idEliminar= $(this).data('id');
@@ -338,7 +272,7 @@ $(document).ready(function(){
   } );
   $(".eliminar").click(function(){
     $.ajax({
-      url: '../php/eliminarproducto.php',
+      url: '../php/eliminarmano.php',
       method: 'POST',
       data:{
         id:idEliminar
@@ -349,20 +283,7 @@ $(document).ready(function(){
     });
 
   });
-  $(".btnEditar").click(function(){
-      idEditar=$(this).data('id');
-      var nombre=$(this).data('nombre');
-      var descripcion=$(this).data('descripcion');
-      var inventario=$(this).data('inventario');
-      var categoria=$(this).data('categoria');
-      var precio=$(this).data('precio');
-      $("#nombreEdit").val(nombre);
-      $("#descripcionEdit").val(descripcion);
-      $("#inventarioEdit").val(inventario);
-      $("#categoriaEdit").val(categoria);
-      $("#precioEdit").val(precio);
-      $("#idEdit").val(idEditar);
-    });
+
 
 });
 </script>

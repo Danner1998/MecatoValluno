@@ -59,27 +59,27 @@ $datos3= $conexion->query("select productos_venta.*,
    
               
               <div class="p-3 p-lg-5 border">
-                <div class="form-group row">
-                  <div class="col-md-10">
-                    <label for="c_fname" class="text-black">Venta :&nbsp; <?php echo $_GET['id_venta'];?></label>
+              <div class="form-group row">
+                  <div class="col-md-12">
+                    <label for="c_fname" class="text-black">Fecha :&nbsp; <?php echo $datosUsuario[3];?></label>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_fname" class="text-black">Nombre :&nbsp; <?php echo $datosUsuario[7];?></label>
+                    <label for="c_fname" class="text-black">Nombre :&nbsp; <?php echo $datosUsuario[8];?></label>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_fname" class="text-black">Email :&nbsp; <?php echo $datosUsuario[9];?></label>
+                    <label for="c_fname" class="text-black">Email :&nbsp; <?php echo $datosUsuario[10];?></label>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_fname" class="text-black">telefono :&nbsp; <?php echo $datosUsuario[8];?></label>
+                    <label for="c_fname" class="text-black">telefono :&nbsp; <?php echo $datosUsuario[9];?></label>
                   </div>
                 </div>
 
@@ -98,7 +98,7 @@ $datos3= $conexion->query("select productos_venta.*,
 
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_fname" class="text-black">Estado :&nbsp; <?php echo $datosEnvio[4];?></label>
+                    <label for="c_fname" class="text-black">Ciudad :&nbsp; <?php echo $datosEnvio[4];?></label>
                   </div>
                 </div>
 
